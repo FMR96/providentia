@@ -472,7 +472,7 @@
 }
 
 .related-card-title:hover {
-  color: var(--signal);
+  color: var(--signal-inv);
 }
 
 .related-card-meta {

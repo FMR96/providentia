@@ -46,7 +46,7 @@ export default async function ArticlePage({ params }: Props) {
       {/* ── Cabecera del artículo (linen) ── */}
       <section
         data-theme="light"
-        className="bg-[#F7F4EF] px-8 md:px-16 lg:px-24 pt-28 pb-12"
+        className="bg-[var(--bg-light)] px-8 md:px-16 lg:px-24 pt-28 pb-12"
       >
         <div className="max-w-[1200px] mx-auto">
 
@@ -76,7 +76,7 @@ export default async function ArticlePage({ params }: Props) {
       {/* ── Cuerpo + sidebar (linen) ── */}
       <section
         data-theme="light"
-        className="bg-[#F7F4EF] px-8 md:px-16 lg:px-24 pb-[96px]"
+        className="bg-[var(--bg-light)] px-8 md:px-16 lg:px-24 pb-[96px]"
       >
         <div className="max-w-[1200px] mx-auto">
           <div className="flex gap-16 items-start">
@@ -127,10 +127,10 @@ export default async function ArticlePage({ params }: Props) {
       {related.length > 0 && (
         <section
           data-theme="dark"
-          className="bg-[#141820] px-8 md:px-16 lg:px-24 py-[96px]"
+          className="bg-[var(--bg-dark)] px-8 md:px-16 lg:px-24 py-[96px]"
         >
           <div className="max-w-[1200px] mx-auto">
-            <p className="data-label text-[#4A5568] mb-10">{t("related_label")}</p>
+            <p className="data-label text-[var(--text-muted)] mb-10">{t("related_label")}</p>
             <div className="grid md:grid-cols-2 gap-12">
               {related.map((r) => (
                 <div key={r.slug} className="related-card">
@@ -151,18 +151,19 @@ export default async function ArticlePage({ params }: Props) {
       {/* ── CTA de contacto (linen) ── */}
       <section
         data-theme="light"
-        className="bg-[#F7F4EF] px-8 md:px-16 lg:px-24 py-[96px] border-t border-[#D6D0C7]"
+        className="bg-[var(--bg-light)] px-8 md:px-16 lg:px-24 py-[96px] border-t border-[var(--border-light)]"
       >
         <div className="max-w-[1200px] mx-auto max-w-2xl">
-          <h2 className="h2-display text-[clamp(28px,3.5vw,44px)] text-[#1A1C20] mb-6 whitespace-pre-line">
+          <h2 className="h2-display text-[clamp(28px,3.5vw,44px)] text-[var(--text-dark)] mb-6 whitespace-pre-line">
             {t("cta_heading")}
           </h2>
-          <p className="font-serif text-[18px] text-[#6B6860] leading-[1.8] mb-10">
+          <p className="font-serif text-[18px] text-[var(--text-mid)] leading-[1.8] mb-10">
             {t("cta_body")}
           </p>
           <Link
             href="/#contacto"
-            className="cta-label text-[#2B5CE6] border border-[rgba(43,92,230,0.30)] px-8 py-3 hover:bg-[rgba(43,92,230,0.08)] transition-colors inline-block"
+            className="cta-label px-8 py-3 transition-colors inline-block"
+            style={{ color: "var(--text-light)", backgroundColor: "var(--signal)" }}
           >
             {t("cta_btn")}
           </Link>

@@ -11,8 +11,9 @@ async function BlogFooter() {
 
   return (
     <footer
-      data-theme="light"
-      className="bg-[#F7F4EF] border-t border-[#D6D0C7] px-8 md:px-16 lg:px-24 py-12"
+      data-theme="dark"
+      className="px-8 md:px-16 lg:px-24 py-12"
+      style={{ background: "var(--evergreen)", borderTop: "1px solid var(--border-dark)" }}
     >
       <div className="max-w-[1200px] mx-auto flex flex-col md:flex-row justify-between items-start gap-8">
         <Link href="/" className="flex items-center gap-3">
@@ -21,9 +22,8 @@ async function BlogFooter() {
             alt="Providentia"
             width={20}
             height={20}
-            style={{ filter: "brightness(0)" }}
           />
-          <span className="font-display italic text-[#1A1C20] text-lg">Providentia</span>
+          <span className="font-display italic text-lg" style={{ color: "var(--text-light)" }}>Providentia</span>
         </Link>
 
         <nav className="flex flex-wrap gap-x-8 gap-y-3">
@@ -37,14 +37,15 @@ async function BlogFooter() {
             <Link
               key={labelKey}
               href={href as any}
-              className="nav-label text-[#6B6860] hover:text-[#1A1C20] transition-colors"
+              className="nav-label transition-colors"
+              style={{ color: "var(--text-muted)" }}
             >
               {t(labelKey)}
             </Link>
           ))}
         </nav>
 
-        <span className="data-label text-[#9E9A94]">{tf("copyright")}</span>
+        <span className="data-label" style={{ color: "var(--text-muted)" }}>{tf("copyright")}</span>
       </div>
     </footer>
   )

@@ -34,15 +34,20 @@ export function BlogNavbar() {
   }, [menuOpen])
 
   const bg = scrolled || menuOpen
-    ? overDark ? "rgba(20, 24, 32, 0.96)" : "rgba(247, 244, 239, 0.96)"
+    ? overDark
+      ? "rgba(30, 46, 36, 0.96)"
+      : "rgba(235, 240, 233, 0.96)"
     : "transparent"
 
   const borderBottom = scrolled && !menuOpen
-    ? overDark ? "1px solid #2A3340" : "1px solid #D6D0C7"
+    ? overDark
+      ? "1px solid var(--border-dark)"
+      : "1px solid var(--border-light)"
     : "none"
 
-  const textMain = overDark ? "#F0EDE8" : "#1A1C20"
-  const textSub  = overDark ? "#8A9AAA" : "#6B6860"
+  const textMain  = overDark ? "var(--text-light)" : "var(--text-dark)"
+  const textSub   = overDark ? "var(--sage)"        : "var(--text-mid)"
+  const menuBorder = overDark ? "var(--bg-dark-2)"  : "var(--border-light)"
 
   const navLinks = [
     { labelKey: "services"   as const, href: "/#servicios"  },
@@ -86,7 +91,14 @@ export function BlogNavbar() {
 
         <div className="hidden md:flex items-center gap-6">
           <LocaleSwitcher onDark={overDark} />
-          <Link href="/#contacto" className="cta-label px-5 py-2 transition-colors duration-300" style={{ color: "#2B5CE6", border: "1px solid rgba(43,92,230,0.30)" }}>
+          <Link
+            href="/#contacto"
+            className="cta-label px-5 py-2 transition-colors duration-300"
+            style={overDark
+              ? { color: "var(--signal-inv)", border: "1px solid var(--border-dark)" }
+              : { color: "var(--text-light)", backgroundColor: "var(--signal)" }
+            }
+          >
             {t("contact")}
           </Link>
         </div>
@@ -105,10 +117,7 @@ export function BlogNavbar() {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div
-          className="md:hidden px-8 pb-10 pt-2 flex flex-col gap-7 border-t"
-          style={{ borderColor: overDark ? "#2A3340" : "#D6D0C7" }}
-        >
+        <div className="md:hidden px-8 pb-10 pt-2 flex flex-col gap-7 border-t" style={{ borderColor: menuBorder }}>
           {navLinks.map(({ labelKey, href }) => (
             <Link key={labelKey} href={href as any} className="nav-label text-[18px]" style={{ color: textSub }} onClick={() => setMenuOpen(false)}>
               {t(labelKey)}
@@ -117,7 +126,7 @@ export function BlogNavbar() {
           <Link href="/#contacto" className="nav-label text-[18px]" style={{ color: textSub }} onClick={() => setMenuOpen(false)}>
             {t("contact")}
           </Link>
-          <div className="pt-2 border-t" style={{ borderColor: overDark ? "#2A3340" : "#D6D0C7" }}>
+          <div className="pt-2 border-t" style={{ borderColor: menuBorder }}>
             <LocaleSwitcher onDark={overDark} />
           </div>
         </div>

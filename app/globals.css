@@ -4,56 +4,74 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* ── Secciones CLARAS ── */
-  --linen:         #F7F4EF;
-  --parchment:     #EDE9E2;
-  --warm-rule:     #D6D0C7;
+  /* ── Paleta base ── */
+  --sage-hint:   #BFCFBB;
+  --mint:        #BFCFBB;
+  --sage:        #8EA58C;
+  --moss:        #738A6E;
+  --evergreen:   #344C3D;
 
-  /* ── Secciones OSCURAS ── */
-  --midnight:      #141820;
-  --deep-slate:    #1E2530;
-  --cool-rule:     #2A3340;
+  /* ── Fondos ── */
+  --bg-light:    #F4F7F3;
+  --bg-light-2:  #EBF0E9;
+  --bg-dark:     #1E2E24;
+  --bg-dark-2:   #253B2C;
 
-  /* ── Acento único — azul analítico ── */
-  --signal:        #2B5CE6;
-  --signal-muted:  #1A3B9E;
-  --signal-ghost:  rgba(43, 92, 230, 0.08);
+  /* ── Texto ── */
+  --text-dark:   #1A2B20;
+  --text-mid:    #4A6354;
+  --text-light:  #EBF0E9;
+  --text-muted:  #8EA58C;
 
-  /* ── Texto en fondos CLAROS ── */
-  --ink:           #1A1C20;
-  --ink-secondary: #6B6860;
-  --ink-muted:     #9E9A94;
+  /* ── Acento único ── */
+  --signal:      #344C3D;
+  --signal-inv:  #BFCFBB;
 
-  /* ── Texto en fondos OSCUROS ── */
-  --chalk:         #F0EDE8;
-  --chalk-secondary: #8A9AAA;
-  --chalk-muted:   #4A5568;
+  /* ── Bordes ── */
+  --border-light: rgba(142, 165, 140, 0.25);
+  --border-dark:  rgba(191, 207, 187, 0.15);
 
   /* ── Glass ── */
-  --glass-light:        rgba(247, 244, 239, 0.70);
-  --glass-dark:         rgba(20, 24, 32, 0.65);
-  --glass-border-light: rgba(26, 28, 32, 0.10);
-  --glass-border-dark:  rgba(240, 237, 232, 0.10);
+  --glass-light:        rgba(235, 240, 233, 0.65);
+  --glass-dark:         rgba(30, 46, 36, 0.60);
+  --glass-border-light: rgba(142, 165, 140, 0.20);
+  --glass-border-dark:  rgba(191, 207, 187, 0.12);
+
+  /* ── Aliases para compatibilidad con blog.css y clases heredadas ── */
+  --linen:           var(--bg-light);
+  --parchment:       var(--bg-light-2);
+  --warm-rule:       var(--border-light);
+  --midnight:        var(--bg-dark);
+  --deep-slate:      var(--bg-dark-2);
+  --cool-rule:       var(--border-dark);
+  --signal-muted:    var(--bg-dark-2);
+  --signal-ghost:    rgba(52, 76, 61, 0.10);
+  --ink:             var(--text-dark);
+  --ink-secondary:   var(--text-mid);
+  --ink-muted:       var(--text-muted);
+  --chalk:           var(--text-light);
+  --chalk-secondary: var(--sage);
+  --chalk-muted:     var(--text-muted);
 
   /* ── Semánticos Tailwind ── */
-  --background:             var(--linen);
-  --foreground:             var(--ink);
-  --card:                   var(--parchment);
-  --card-foreground:        var(--ink);
-  --popover:                var(--parchment);
-  --popover-foreground:     var(--ink);
+  --background:             var(--bg-light);
+  --foreground:             var(--text-dark);
+  --card:                   var(--bg-light-2);
+  --card-foreground:        var(--text-dark);
+  --popover:                var(--bg-light-2);
+  --popover-foreground:     var(--text-dark);
   --primary:                var(--signal);
-  --primary-foreground:     #ffffff;
-  --secondary:              var(--deep-slate);
-  --secondary-foreground:   var(--chalk);
-  --muted:                  var(--parchment);
-  --muted-foreground:       var(--ink-secondary);
+  --primary-foreground:     var(--text-light);
+  --secondary:              var(--bg-dark-2);
+  --secondary-foreground:   var(--text-light);
+  --muted:                  var(--bg-light-2);
+  --muted-foreground:       var(--text-mid);
   --accent:                 var(--signal);
-  --accent-foreground:      #ffffff;
+  --accent-foreground:      var(--text-light);
   --destructive:            #C0392B;
   --destructive-foreground: #ffffff;
-  --border:                 var(--warm-rule);
-  --input:                  var(--parchment);
+  --border:                 var(--border-light);
+  --input:                  var(--bg-light-2);
   --ring:                   var(--signal);
   --radius:                 0.125rem;
 }
@@ -85,11 +103,20 @@
   --color-input:                  var(--input);
   --color-ring:                   var(--ring);
 
+  /* Tokens sage */
+  --color-sage-hint:  var(--sage-hint);
+  --color-sage:       var(--sage);
+  --color-moss:       var(--moss);
+  --color-evergreen:  var(--evergreen);
+  --color-bg-light:   var(--bg-light);
+  --color-bg-dark:    var(--bg-dark);
+  --color-signal:     var(--signal);
+
+  /* Tokens legacy (backward compat) */
   --color-linen:      var(--linen);
   --color-parchment:  var(--parchment);
   --color-midnight:   var(--midnight);
   --color-deep-slate: var(--deep-slate);
-  --color-signal:     var(--signal);
   --color-ink:        var(--ink);
   --color-chalk:      var(--chalk);
 
@@ -181,33 +208,42 @@
   text-transform: uppercase;
 }
 
-/* ── Glass — precisión suiza ── */
+/* ── Glass — sage orgánico ── */
 .glass-light {
   background: var(--glass-light);
-  backdrop-filter: blur(20px) saturate(120%);
-  -webkit-backdrop-filter: blur(20px) saturate(120%);
+  backdrop-filter: blur(20px) saturate(130%);
+  -webkit-backdrop-filter: blur(20px) saturate(130%);
   border: 1px solid var(--glass-border-light);
+  border-top: 1px solid rgba(191, 207, 187, 0.40);
   border-radius: 2px;
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.80) inset,
-              0 4px 24px rgba(26, 28, 32, 0.06);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.50),
+    0 4px 24px rgba(52, 76, 61, 0.08);
 }
 
 .glass-dark {
   background: var(--glass-dark);
-  backdrop-filter: blur(24px) saturate(130%);
-  -webkit-backdrop-filter: blur(24px) saturate(130%);
+  backdrop-filter: blur(24px) saturate(120%);
+  -webkit-backdrop-filter: blur(24px) saturate(120%);
   border: 1px solid var(--glass-border-dark);
+  border-top: 1px solid rgba(191, 207, 187, 0.18);
   border-radius: 2px;
-  box-shadow: 0 1px 0 rgba(240, 237, 232, 0.06) inset,
-              0 4px 32px rgba(10, 12, 18, 0.40);
+  box-shadow:
+    inset 0 1px 0 rgba(191, 207, 187, 0.06),
+    0 8px 32px rgba(20, 35, 25, 0.40);
 }
 
-/* ── Signal badge ── */
+@supports not (backdrop-filter: blur(1px)) {
+  .glass-light { background: rgba(235, 240, 233, 0.95); }
+  .glass-dark  { background: rgba(30, 46, 36, 0.95); }
+}
+
+/* ── Signal badge — contexto oscuro ── */
 .signal-badge {
   display: inline-block;
-  background: var(--signal-ghost);
-  border: 1px solid rgba(43, 92, 230, 0.20);
-  color: var(--signal);
+  background: rgba(191, 207, 187, 0.10);
+  border: 1px solid rgba(191, 207, 187, 0.18);
+  color: var(--text-muted);
   border-radius: 2px;
   padding: 3px 10px;
   font-family: var(--font-jetbrains), monospace;

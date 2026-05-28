@@ -77,16 +77,16 @@ export default async function BlogPage({ params }: Props) {
   const ctaLabel  = t("read_article")
 
   return (
-    <div className="min-h-screen bg-[#F7F4EF] pt-20">
+    <div className="min-h-screen bg-[var(--bg-light)] pt-20">
 
       {/* ── Cabecera ── */}
       <section
         data-theme="light"
-        className="bg-[#F7F4EF] px-8 md:px-16 lg:px-24 pt-16 pb-12"
+        className="bg-[var(--bg-light)] px-8 md:px-16 lg:px-24 pt-16 pb-12"
       >
         <div className="max-w-[1200px] mx-auto">
-          <p className="data-label text-[#9E9A94] mb-6">{t("tagline")}</p>
-          <h1 className="h1-display text-[clamp(40px,6vw,72px)] text-[#1A1C20] mb-10 whitespace-pre-line">
+          <p className="data-label text-[var(--text-muted)] mb-6">{t("tagline")}</p>
+          <h1 className="h1-display text-[clamp(40px,6vw,72px)] text-[var(--text-dark)] mb-10 whitespace-pre-line">
             {t("heading")}
           </h1>
 
@@ -109,7 +109,7 @@ export default async function BlogPage({ params }: Props) {
       {/* ── Artículos ── */}
       <section
         data-theme="light"
-        className="bg-[#F7F4EF] px-8 md:px-16 lg:px-24 pb-[96px]"
+        className="bg-[var(--bg-light)] px-8 md:px-16 lg:px-24 pb-[96px]"
       >
         <div className="max-w-[1200px] mx-auto">
 

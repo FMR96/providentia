@@ -47,15 +47,20 @@ function GlassNavbar() {
   }, [menuOpen])
 
   const bg = scrolled || menuOpen
-    ? overDark ? "rgba(20, 24, 32, 0.96)" : "rgba(247, 244, 239, 0.96)"
+    ? overDark
+      ? "rgba(30, 46, 36, 0.96)"
+      : "rgba(235, 240, 233, 0.96)"
     : "transparent"
 
   const borderBottom = scrolled && !menuOpen
-    ? overDark ? "1px solid #2A3340" : "1px solid #D6D0C7"
+    ? overDark
+      ? "1px solid var(--border-dark)"
+      : "1px solid var(--border-light)"
     : "none"
 
-  const textMain = overDark ? "#F0EDE8" : "#1A1C20"
-  const textSub  = overDark ? "#8A9AAA" : "#6B6860"
+  const textMain = overDark ? "var(--text-light)"  : "var(--text-dark)"
+  const textSub  = overDark ? "var(--sage)"         : "var(--text-mid)"
+  const menuBorder = overDark ? "var(--bg-dark-2)"  : "var(--border-light)"
 
   const navLinks = [
     { labelKey: "services"   as const, href: "#servicios" },
@@ -99,7 +104,14 @@ function GlassNavbar() {
 
         <div className="hidden md:flex items-center gap-6">
           <LocaleSwitcher onDark={overDark} />
-          <a href="#contacto" className="cta-label px-5 py-2 transition-colors duration-300" style={{ color: "#2B5CE6", border: "1px solid rgba(43,92,230,0.30)" }}>
+          <a
+            href="#contacto"
+            className="cta-label px-5 py-2 transition-colors duration-300"
+            style={overDark
+              ? { color: "var(--signal-inv)", border: "1px solid var(--border-dark)" }
+              : { color: "var(--text-light)", backgroundColor: "var(--signal)" }
+            }
+          >
             {t("contact")}
           </a>
         </div>
@@ -118,10 +130,7 @@ function GlassNavbar() {
 
       {/* Mobile menu */}
       {menuOpen && (
-        <div
-          className="md:hidden px-8 pb-10 pt-2 flex flex-col gap-7 border-t"
-          style={{ borderColor: overDark ? "#2A3340" : "#D6D0C7" }}
-        >
+        <div className="md:hidden px-8 pb-10 pt-2 flex flex-col gap-7 border-t" style={{ borderColor: menuBorder }}>
           {navLinks.map(({ labelKey, href }) => (
             href.startsWith("#") ? (
               <a key={labelKey} href={href} className="nav-label text-[18px]" style={{ color: textSub }} onClick={() => setMenuOpen(false)}>
@@ -136,7 +145,7 @@ function GlassNavbar() {
           <a href="#contacto" className="nav-label text-[18px]" style={{ color: textSub }} onClick={() => setMenuOpen(false)}>
             {t("contact")}
           </a>
-          <div className="pt-2 border-t" style={{ borderColor: overDark ? "#2A3340" : "#D6D0C7" }}>
+          <div className="pt-2 border-t" style={{ borderColor: menuBorder }}>
             <LocaleSwitcher onDark={overDark} />
           </div>
         </div>
@@ -159,11 +168,11 @@ function ServiceCard({
   delay: string
 }) {
   return (
-    <div className={`border-t border-[#2A3340] pt-8 animate-fade-up ${delay}`}>
-      <div className="metric-display text-[#4A5568] text-sm mb-6">{numeral}</div>
-      <h3 className="h3-display text-[clamp(20px,2.5vw,28px)] text-[#F0EDE8] mb-3">{title}</h3>
+    <div className={`glass-dark p-8 animate-fade-up ${delay}`}>
+      <div className="metric-display text-sm mb-6" style={{ color: "var(--sage)" }}>{numeral}</div>
+      <h3 className="h3-display mb-3" style={{ fontSize: "clamp(20px,2.5vw,28px)", color: "var(--text-light)" }}>{title}</h3>
       <span className="signal-badge mb-5 inline-block">{tag}</span>
-      <p className="font-serif text-[18px] text-[#8A9AAA] leading-[1.8] mt-4">{description}</p>
+      <p className="font-serif text-[18px] leading-[1.8] mt-4" style={{ color: "var(--text-muted)" }}>{description}</p>
     </div>
   )
 }
@@ -212,16 +221,16 @@ function MethodBar({
   return (
     <div ref={containerRef} className={`animate-fade-up ${delay}`}>
       <div className="flex justify-between mb-3">
-        <span className="data-label text-[#6B6860]">{label}</span>
-        <span className="metric-display text-[#2B5CE6] text-sm">
+        <span className="data-label" style={{ color: "var(--text-dark)" }}>{label}</span>
+        <span className="metric-display text-sm" style={{ color: "var(--text-muted)" }}>
           {displayPercent}<span className="text-[10px] opacity-60 ml-0.5">%</span>
         </span>
       </div>
-      <div className="h-[1px] bg-[#D6D0C7] relative">
+      <div className="h-[1px] relative" style={{ background: "rgba(142, 165, 140, 0.20)" }}>
         <div
           ref={barRef}
-          className="absolute top-0 left-0 h-full bg-[#2B5CE6] transition-all duration-[2000ms] ease-out"
-          style={{ width: "0%" }}
+          className="absolute top-0 left-0 h-full transition-all duration-[2000ms] ease-out"
+          style={{ width: "0%", background: "var(--moss)" }}
         />
       </div>
     </div>
@@ -248,32 +257,35 @@ export default function Home() {
     <div className="min-h-screen">
       <GlassNavbar />
 
-      {/* ── I · HERO (linen) ── */}
+      {/* ── I · HERO (claro) ── */}
       <section
         data-theme="light"
-        className="bg-[#F7F4EF] min-h-screen flex flex-col justify-center px-8 md:px-16 lg:px-24 pt-20"
+        className="min-h-screen flex flex-col justify-center px-8 md:px-16 lg:px-24 pt-20"
+        style={{ background: "var(--bg-light)" }}
       >
         <div className="max-w-[1200px] mx-auto w-full py-[96px]">
           <div className="max-w-4xl">
-            <p className="data-label text-[#9E9A94] mb-10 animate-fade-up">
+            <p className="data-label mb-10 animate-fade-up" style={{ color: "var(--text-muted)" }}>
               {th("tagline")}
             </p>
-            <h1 className="h1-display text-[clamp(48px,7vw,88px)] text-[#1A1C20] animate-fade-up animation-delay-100 whitespace-pre-line">
+            <h1 className="h1-display animate-fade-up animation-delay-100 whitespace-pre-line" style={{ fontSize: "clamp(48px,7vw,88px)", color: "var(--text-dark)" }}>
               {th("headline")}
             </h1>
-            <p className="font-serif text-[18px] text-[#6B6860] leading-[1.8] mt-10 max-w-lg animate-fade-up animation-delay-200 whitespace-pre-line">
+            <p className="font-serif text-[18px] leading-[1.8] mt-10 max-w-lg animate-fade-up animation-delay-200 whitespace-pre-line" style={{ color: "var(--text-mid)" }}>
               {th("body")}
             </p>
             <div className="flex items-center gap-8 mt-12 animate-fade-up animation-delay-300">
               <a
                 href="#servicios"
-                className="cta-label text-[#2B5CE6] border border-[rgba(43,92,230,0.30)] px-8 py-3 hover:bg-[rgba(43,92,230,0.08)] transition-colors"
+                className="cta-label px-8 py-3 transition-colors"
+                style={{ background: "var(--signal)", color: "var(--text-light)" }}
               >
                 {th("cta_services")}
               </a>
               <a
                 href="#contacto"
-                className="cta-label text-[#6B6860] hover:text-[#1A1C20] transition-colors"
+                className="cta-label px-6 py-3 transition-colors"
+                style={{ color: "var(--moss)", border: "1px solid var(--border-light)" }}
               >
                 {th("cta_contact")}
               </a>
@@ -282,21 +294,22 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── II · SERVICIOS (midnight) ── */}
+      {/* ── II · SERVICIOS (oscuro) ── */}
       <section
         id="servicios"
         data-theme="dark"
-        className="bg-[#141820] px-8 md:px-16 lg:px-24 py-[96px]"
+        className="px-8 md:px-16 lg:px-24 py-[96px]"
+        style={{ background: "var(--bg-dark)" }}
       >
         <div className="max-w-[1200px] mx-auto">
           <div className="mb-20">
-            <p className="data-label text-[#4A5568] mb-6 animate-fade-up">{ts("label")}</p>
-            <h2 className="h2-display text-[clamp(32px,4.5vw,56px)] text-[#F0EDE8] animate-fade-up animation-delay-100 whitespace-pre-line">
+            <p className="data-label mb-6 animate-fade-up" style={{ color: "var(--text-muted)" }}>{ts("label")}</p>
+            <h2 className="h2-display animate-fade-up animation-delay-100 whitespace-pre-line" style={{ fontSize: "clamp(32px,4.5vw,56px)", color: "var(--text-light)" }}>
               {ts("heading")}
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-x-16 gap-y-16">
+          <div className="grid md:grid-cols-2 gap-x-8 gap-y-8">
             {serviceItems.map((item, i) => (
               <ServiceCard
                 key={item.numeral}
@@ -311,20 +324,21 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── III · MÉTODO (linen) ── */}
+      {/* ── III · MÉTODO (claro) ── */}
       <section
         id="metodo"
         data-theme="light"
-        className="bg-[#F7F4EF] px-8 md:px-16 lg:px-24 py-[96px]"
+        className="px-8 md:px-16 lg:px-24 py-[96px]"
+        style={{ background: "var(--bg-light)" }}
       >
         <div className="max-w-[1200px] mx-auto">
           <div className="grid md:grid-cols-2 gap-16 items-start">
             <div>
-              <p className="data-label text-[#9E9A94] mb-6 animate-fade-up">{tm("label")}</p>
-              <h2 className="h2-display text-[clamp(32px,4.5vw,56px)] text-[#1A1C20] animate-fade-up animation-delay-100 whitespace-pre-line">
+              <p className="data-label mb-6 animate-fade-up" style={{ color: "var(--text-muted)" }}>{tm("label")}</p>
+              <h2 className="h2-display animate-fade-up animation-delay-100 whitespace-pre-line" style={{ fontSize: "clamp(32px,4.5vw,56px)", color: "var(--text-dark)" }}>
                 {tm("heading")}
               </h2>
-              <p className="font-serif text-[18px] text-[#6B6860] leading-[1.8] mt-8 animate-fade-up animation-delay-200">
+              <p className="font-serif text-[18px] leading-[1.8] mt-8 animate-fade-up animation-delay-200" style={{ color: "var(--text-mid)" }}>
                 {tm("body")}
               </p>
             </div>
@@ -343,32 +357,42 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── IV · FILOSOFÍA + CONTACTO (midnight) ── */}
+      {/* ── IV · FILOSOFÍA + CONTACTO (oscuro) ── */}
       <section
         id="filosofia"
         data-theme="dark"
-        className="bg-[#141820] px-8 md:px-16 lg:px-24 py-[96px]"
+        className="px-8 md:px-16 lg:px-24 py-[96px]"
+        style={{ background: "var(--bg-dark)" }}
       >
         <div className="max-w-[1200px] mx-auto">
           <div className="max-w-3xl">
-            <p className="data-label text-[#4A5568] mb-8 animate-fade-up">{tp("label")}</p>
-            <blockquote className="h2-display text-[clamp(28px,3.5vw,48px)] text-[#F0EDE8] leading-[1.2] animate-fade-up animation-delay-100 whitespace-pre-line">
+            <p className="data-label mb-8 animate-fade-up" style={{ color: "var(--text-muted)" }}>{tp("label")}</p>
+            <blockquote
+              className="h2-display leading-[1.2] animate-fade-up animation-delay-100 whitespace-pre-line pl-6"
+              style={{
+                fontSize: "clamp(28px,3.5vw,48px)",
+                color: "var(--text-light)",
+                borderLeft: "2px solid var(--sage)",
+              }}
+            >
               {tp("quote")}
             </blockquote>
 
             <div
               id="contacto"
-              className="mt-16 pt-16 border-t border-[#2A3340] animate-fade-up animation-delay-200"
+              className="mt-16 pt-16 animate-fade-up animation-delay-200"
+              style={{ borderTop: "1px solid var(--border-dark)" }}
             >
-              <h3 className="h3-display text-[clamp(20px,2.5vw,28px)] text-[#F0EDE8] mb-4">
+              <h3 className="h3-display mb-4" style={{ fontSize: "clamp(20px,2.5vw,28px)", color: "var(--text-light)" }}>
                 {tc("heading")}
               </h3>
-              <p className="font-serif text-[18px] text-[#8A9AAA] leading-[1.8] mb-8 max-w-md">
+              <p className="font-serif text-[18px] leading-[1.8] mb-8 max-w-md" style={{ color: "var(--text-muted)" }}>
                 {tc("body")}
               </p>
               <a
                 href="mailto:hola@providentia.es"
-                className="cta-label text-[#2B5CE6] border border-[rgba(43,92,230,0.30)] px-8 py-3 hover:bg-[rgba(43,92,230,0.08)] transition-colors inline-block"
+                className="cta-label px-8 py-3 transition-colors inline-block"
+                style={{ color: "var(--signal-inv)", border: "1px solid var(--border-dark)" }}
               >
                 {tc("cta")}
               </a>
@@ -377,22 +401,24 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── V · INSIGHTS (linen) ── */}
+      {/* ── V · INSIGHTS (claro) ── */}
       <section
         data-theme="light"
-        className="bg-[#F7F4EF] px-8 md:px-16 lg:px-24 py-[96px] border-t border-[#D6D0C7]"
+        className="px-8 md:px-16 lg:px-24 py-[96px]"
+        style={{ background: "var(--bg-light)", borderTop: "1px solid var(--border-light)" }}
       >
         <div className="max-w-[1200px] mx-auto">
           <div className="flex items-end justify-between mb-16">
             <div>
-              <p className="data-label text-[#9E9A94] mb-5">{ti("label")}</p>
-              <h2 className="h2-display text-[clamp(32px,4.5vw,56px)] text-[#1A1C20]">
+              <p className="data-label mb-5" style={{ color: "var(--text-muted)" }}>{ti("label")}</p>
+              <h2 className="h2-display" style={{ fontSize: "clamp(32px,4.5vw,56px)", color: "var(--text-dark)" }}>
                 {ti("heading")}
               </h2>
             </div>
             <Link
               href="/blog"
-              className="cta-label text-[#6B6860] hover:text-[#1A1C20] transition-colors hidden md:block"
+              className="cta-label hidden md:block transition-colors"
+              style={{ color: "var(--moss)" }}
             >
               {ti("cta_all")}
             </Link>
@@ -400,25 +426,30 @@ export default function Home() {
 
           <div className="grid md:grid-cols-3 gap-x-12">
             {articles.map((post) => (
-              <div key={post.slug} className="border-t border-[#D6D0C7] pt-7">
+              <div key={post.slug} className="pt-7" style={{ borderTop: "1px solid var(--border-light)" }}>
                 <span
                   className="font-mono text-[11px] tracking-[0.15em] uppercase"
-                  style={{ fontFamily: "var(--font-jetbrains), monospace", color: "#2B5CE6" }}
+                  style={{ fontFamily: "var(--font-jetbrains), monospace", color: "var(--moss)" }}
                 >
                   {post.category}
                 </span>
                 <Link
                   href={`/blog/${post.slug}` as any}
-                  className="block mt-3 mb-3 font-display italic font-light leading-[1.2] text-[#1A1C20] hover:text-[#2B5CE6] transition-colors"
-                  style={{ fontFamily: "var(--font-cormorant), serif", fontSize: "clamp(20px,2vw,24px)" }}
+                  className="block mt-3 mb-3 font-display italic font-light leading-[1.2] transition-colors"
+                  style={{
+                    fontFamily: "var(--font-cormorant), serif",
+                    fontSize: "clamp(20px,2vw,24px)",
+                    color: "var(--text-dark)",
+                  }}
                 >
                   {post.title}
                 </Link>
                 <p
-                  className="text-[#6B6860] leading-[1.7] mb-4"
+                  className="leading-[1.7] mb-4"
                   style={{
                     fontFamily: "var(--font-cormorant), serif",
                     fontSize: "17px",
+                    color: "var(--text-mid)",
                     display: "-webkit-box",
                     WebkitLineClamp: 2,
                     WebkitBoxOrient: "vertical",
@@ -429,7 +460,7 @@ export default function Home() {
                 </p>
                 <span
                   className="text-[11px] tracking-[0.10em]"
-                  style={{ fontFamily: "var(--font-jetbrains), monospace", color: "#9E9A94" }}
+                  style={{ fontFamily: "var(--font-jetbrains), monospace", color: "var(--text-muted)" }}
                 >
                   {post.date} · {post.readTime} min
                 </span>
@@ -438,22 +469,23 @@ export default function Home() {
           </div>
 
           <div className="mt-12 md:hidden">
-            <Link href="/blog" className="cta-label text-[#6B6860] hover:text-[#1A1C20] transition-colors">
+            <Link href="/blog" className="cta-label transition-colors" style={{ color: "var(--moss)" }}>
               {ti("cta_all")}
             </Link>
           </div>
         </div>
       </section>
 
-      {/* ── FOOTER (linen) ── */}
+      {/* ── FOOTER (evergreen oscuro) ── */}
       <footer
-        data-theme="light"
-        className="bg-[#F7F4EF] border-t border-[#D6D0C7] px-8 md:px-16 lg:px-24 py-12"
+        data-theme="dark"
+        className="px-8 md:px-16 lg:px-24 py-12"
+        style={{ background: "var(--evergreen)", borderTop: "1px solid var(--border-dark)" }}
       >
         <div className="max-w-[1200px] mx-auto flex flex-col md:flex-row justify-between items-start gap-8">
           <Link href="/" className="flex items-center gap-3">
-            <Logo className="w-5 h-5" onDark={false} />
-            <span className="font-display italic text-[#1A1C20] text-lg">Providentia</span>
+            <Logo className="w-5 h-5" onDark={true} />
+            <span className="font-display italic text-lg" style={{ color: "var(--text-light)" }}>Providentia</span>
           </Link>
 
           <nav className="flex flex-wrap gap-x-8 gap-y-3">
@@ -465,26 +497,18 @@ export default function Home() {
               { labelKey: "contact"    as const, href: "#contacto"  },
             ].map(({ labelKey, href }) => (
               href.startsWith("#") ? (
-                <a
-                  key={labelKey}
-                  href={href}
-                  className="nav-label text-[#6B6860] hover:text-[#1A1C20] transition-colors"
-                >
+                <a key={labelKey} href={href} className="nav-label transition-colors" style={{ color: "var(--text-muted)" }}>
                   {t(`nav.${labelKey}`)}
                 </a>
               ) : (
-                <Link
-                  key={labelKey}
-                  href={href as "/blog"}
-                  className="nav-label text-[#6B6860] hover:text-[#1A1C20] transition-colors"
-                >
+                <Link key={labelKey} href={href as "/blog"} className="nav-label transition-colors" style={{ color: "var(--text-muted)" }}>
                   {t(`nav.${labelKey}`)}
                 </Link>
               )
             ))}
           </nav>
 
-          <span className="data-label text-[#9E9A94]">{tf("copyright")}</span>
+          <span className="data-label" style={{ color: "var(--text-muted)" }}>{tf("copyright")}</span>
         </div>
       </footer>
     </div>

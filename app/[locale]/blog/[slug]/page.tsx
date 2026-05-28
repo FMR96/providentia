@@ -1,20 +1,22 @@
-import Link from "next/link"
 import { getPost, getAllPostsMeta, getRelatedPosts } from "@/lib/blog"
+import { getTranslations } from "next-intl/server"
+import { Link } from "@/i18n/navigation"
 import { notFound } from "next/navigation"
 import type { Metadata } from "next"
 
 interface Props {
-  params: Promise<{ slug: string }>
+  params: Promise<{ locale: string; slug: string }>
 }
 
-export async function generateStaticParams() {
-  const posts = getAllPostsMeta()
+export async function generateStaticParams({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  const posts = getAllPostsMeta(locale)
   return posts.map((p) => ({ slug: p.slug }))
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug } = await params
-  const post = await getPost(slug)
+  const { locale, slug } = await params
+  const post = await getPost(slug, locale)
   if (!post) return {}
   return {
     title: `${post.title} — Providentia`,
@@ -29,16 +31,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function ArticlePage({ params }: Props) {
-  const { slug } = await params
-  const post = await getPost(slug)
+  const { locale, slug } = await params
+  const post = await getPost(slug, locale)
   if (!post) notFound()
 
-  const related = getRelatedPosts(slug, post.category)
+  const related = getRelatedPosts(slug, post.category, 2, locale)
+  const t = await getTranslations({ locale, namespace: "blog_article" })
 
   return (
     <div className="min-h-screen">
 
-      {/* Barra de progreso de lectura */}
       <div id="reading-progress-bar" />
 
       {/* ── Cabecera del artículo (linen) ── */}
@@ -48,11 +50,10 @@ export default async function ArticlePage({ params }: Props) {
       >
         <div className="max-w-[1200px] mx-auto">
 
-          {/* Breadcrumbs */}
           <nav className="blog-breadcrumb">
-            <Link href="/">Inicio</Link>
+            <Link href="/">{t("breadcrumb_home")}</Link>
             <span className="blog-breadcrumb-sep">›</span>
-            <Link href="/blog">Insights</Link>
+            <Link href="/blog">{t("breadcrumb_blog")}</Link>
             <span className="blog-breadcrumb-sep">›</span>
             <span className="blog-breadcrumb-current">{post.title}</span>
           </nav>
@@ -67,7 +68,7 @@ export default async function ArticlePage({ params }: Props) {
             <span className="article-header-meta-sep">·</span>
             <span>{post.date}</span>
             <span className="article-header-meta-sep">·</span>
-            <span>{post.readTime} min de lectura</span>
+            <span>{post.readTime} {t("read_time", { n: post.readTime }).replace(String(post.readTime), "").trim()}</span>
           </div>
         </div>
       </section>
@@ -80,7 +81,6 @@ export default async function ArticlePage({ params }: Props) {
         <div className="max-w-[1200px] mx-auto">
           <div className="flex gap-16 items-start">
 
-            {/* Cuerpo del artículo */}
             <div className="flex-1 min-w-0">
               <div
                 id="article-content"
@@ -89,13 +89,12 @@ export default async function ArticlePage({ params }: Props) {
               />
             </div>
 
-            {/* Sidebar — sticky en desktop */}
             <aside className="hidden lg:block w-56 shrink-0">
               <div className="blog-sidebar">
-                <span className="blog-toc-label">En este artículo</span>
+                <span className="blog-toc-label">{t("toc_label")}</span>
                 <ul id="toc-nav" className="blog-toc-nav" />
 
-                <span className="blog-share-label">Compartir</span>
+                <span className="blog-share-label">{t("share_label")}</span>
                 <div className="blog-share-btns">
                   <a
                     href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`https://providentia.es/blog/${slug}`)}`}
@@ -103,7 +102,7 @@ export default async function ArticlePage({ params }: Props) {
                     rel="noopener noreferrer"
                     className="blog-share-btn"
                   >
-                    LinkedIn
+                    {t("share_linkedin")}
                   </a>
                   <a
                     href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(`https://providentia.es/blog/${slug}`)}&text=${encodeURIComponent(post.title)}`}
@@ -111,10 +110,10 @@ export default async function ArticlePage({ params }: Props) {
                     rel="noopener noreferrer"
                     className="blog-share-btn"
                   >
-                    X / Twitter
+                    {t("share_twitter")}
                   </a>
                   <button id="copy-link-btn" className="blog-share-btn">
-                    Copiar enlace
+                    {t("share_copy")}
                   </button>
                 </div>
               </div>
@@ -131,16 +130,16 @@ export default async function ArticlePage({ params }: Props) {
           className="bg-[#141820] px-8 md:px-16 lg:px-24 py-[96px]"
         >
           <div className="max-w-[1200px] mx-auto">
-            <p className="data-label text-[#4A5568] mb-10">También puede interesarte</p>
+            <p className="data-label text-[#4A5568] mb-10">{t("related_label")}</p>
             <div className="grid md:grid-cols-2 gap-12">
               {related.map((r) => (
                 <div key={r.slug} className="related-card">
                   <div className="related-card-category">{r.category}</div>
-                  <Link href={`/blog/${r.slug}`} className="related-card-title">
+                  <Link href={`/blog/${r.slug}` as any} className="related-card-title">
                     {r.title}
                   </Link>
                   <div className="related-card-meta">
-                    {r.date} · {r.readTime} min de lectura
+                    {r.date} · {r.readTime} min
                   </div>
                 </div>
               ))}
@@ -155,17 +154,17 @@ export default async function ArticlePage({ params }: Props) {
         className="bg-[#F7F4EF] px-8 md:px-16 lg:px-24 py-[96px] border-t border-[#D6D0C7]"
       >
         <div className="max-w-[1200px] mx-auto max-w-2xl">
-          <h2 className="h2-display text-[clamp(28px,3.5vw,44px)] text-[#1A1C20] mb-6">
-            ¿Quieres aplicar esto<br />a tu empresa?
+          <h2 className="h2-display text-[clamp(28px,3.5vw,44px)] text-[#1A1C20] mb-6 whitespace-pre-line">
+            {t("cta_heading")}
           </h2>
           <p className="font-serif text-[18px] text-[#6B6860] leading-[1.8] mb-10">
-            Hablemos. Sin compromiso y sin presentaciones de cincuenta diapositivas.
+            {t("cta_body")}
           </p>
           <Link
             href="/#contacto"
             className="cta-label text-[#2B5CE6] border border-[rgba(43,92,230,0.30)] px-8 py-3 hover:bg-[rgba(43,92,230,0.08)] transition-colors inline-block"
           >
-            Iniciar conversación
+            {t("cta_btn")}
           </Link>
         </div>
       </section>

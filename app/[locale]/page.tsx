@@ -1,7 +1,10 @@
 "use client"
 
 import Image from "next/image"
+import { useTranslations } from "next-intl"
 import { useEffect, useRef, useState } from "react"
+import { LocaleSwitcher } from "@/components/locale-switcher"
+import { Link } from "@/i18n/navigation"
 
 function Logo({ className = "", onDark = false }: { className?: string; onDark?: boolean }) {
   return (
@@ -17,6 +20,7 @@ function Logo({ className = "", onDark = false }: { className?: string; onDark?:
 }
 
 function GlassNavbar() {
+  const t = useTranslations("nav")
   const [scrolled, setScrolled] = useState(false)
   const [overDark, setOverDark] = useState(false)
 
@@ -57,41 +61,55 @@ function GlassNavbar() {
       }}
     >
       <div className="px-8 md:px-16 lg:px-24 py-5 flex items-center justify-between max-w-[1200px] mx-auto">
-        <div className="flex items-center gap-3">
+        <Link href="/" className="flex items-center gap-3">
           <Logo className="w-5 h-5" onDark={overDark} />
           <span className="font-display italic text-lg leading-none transition-colors duration-300" style={{ color: textMain }}>
             Providentia
           </span>
-        </div>
+        </Link>
 
         <div className="hidden md:flex items-center gap-10">
           {[
-            { label: "Servicios", href: "#servicios" },
-            { label: "Método",    href: "#metodo"    },
-            { label: "Insights",  href: "/blog"      },
-            { label: "Filosofía", href: "#filosofia" },
-          ].map(({ label, href }) => (
-            <a
-              key={label}
-              href={href}
-              className="nav-label transition-colors duration-300"
-              style={{ color: textSub }}
-            >
-              {label}
-            </a>
+            { labelKey: "services" as const, href: "#servicios" },
+            { labelKey: "method"   as const, href: "#metodo"    },
+            { labelKey: "insights" as const, href: "/blog"      },
+            { labelKey: "philosophy" as const, href: "#filosofia" },
+          ].map(({ labelKey, href }) => (
+            href.startsWith("#") ? (
+              <a
+                key={labelKey}
+                href={href}
+                className="nav-label transition-colors duration-300"
+                style={{ color: textSub }}
+              >
+                {t(labelKey)}
+              </a>
+            ) : (
+              <Link
+                key={labelKey}
+                href={href as "/blog"}
+                className="nav-label transition-colors duration-300"
+                style={{ color: textSub }}
+              >
+                {t(labelKey)}
+              </Link>
+            )
           ))}
         </div>
 
-        <a
-          href="#contacto"
-          className="hidden md:inline-block cta-label px-5 py-2 transition-colors duration-300"
-          style={{
-            color: "#2B5CE6",
-            border: "1px solid rgba(43,92,230,0.30)",
-          }}
-        >
-          Contacto
-        </a>
+        <div className="hidden md:flex items-center gap-6">
+          <LocaleSwitcher onDark={overDark} />
+          <a
+            href="#contacto"
+            className="cta-label px-5 py-2 transition-colors duration-300"
+            style={{
+              color: "#2B5CE6",
+              border: "1px solid rgba(43,92,230,0.30)",
+            }}
+          >
+            {t("contact")}
+          </a>
+        </div>
       </div>
     </nav>
   )
@@ -181,6 +199,21 @@ function MethodBar({
 }
 
 export default function Home() {
+  const t  = useTranslations()
+  const th = useTranslations("hero")
+  const ts = useTranslations("services")
+  const tm = useTranslations("method")
+  const tp = useTranslations("philosophy")
+  const tc = useTranslations("contact")
+  const ti = useTranslations("insights")
+  const tf = useTranslations("footer")
+
+  const serviceItems = ts.raw("items") as Array<{ numeral: string; title: string; tag: string; description: string }>
+  const methodBars   = tm.raw("bars") as Array<{ label: string; percentage: number }>
+  const articles     = ti.raw("articles") as Array<{ slug: string; category: string; title: string; excerpt: string; date: string; readTime: number }>
+
+  const methodDelays = ["animation-delay-200", "animation-delay-300", "animation-delay-400", "animation-delay-500"]
+
   return (
     <div className="min-h-screen">
       <GlassNavbar />
@@ -193,28 +226,26 @@ export default function Home() {
         <div className="max-w-[1200px] mx-auto w-full py-[96px]">
           <div className="max-w-4xl">
             <p className="data-label text-[#9E9A94] mb-10 animate-fade-up">
-              Barcelona · Inteligencia analítica
+              {th("tagline")}
             </p>
-            <h1 className="h1-display text-[clamp(48px,7vw,88px)] text-[#1A1C20] animate-fade-up animation-delay-100">
-              Los datos dicen<br />lo que el instinto<br />no puede confirmar.
+            <h1 className="h1-display text-[clamp(48px,7vw,88px)] text-[#1A1C20] animate-fade-up animation-delay-100 whitespace-pre-line">
+              {th("headline")}
             </h1>
-            <p className="font-serif text-[18px] text-[#6B6860] leading-[1.8] mt-10 max-w-lg animate-fade-up animation-delay-200">
-              Providentia es una agencia de inteligencia analítica.<br />
-              Trabajamos con un número reducido de clientes.<br />
-              Los elegimos con cuidado.
+            <p className="font-serif text-[18px] text-[#6B6860] leading-[1.8] mt-10 max-w-lg animate-fade-up animation-delay-200 whitespace-pre-line">
+              {th("body")}
             </p>
             <div className="flex items-center gap-8 mt-12 animate-fade-up animation-delay-300">
               <a
                 href="#servicios"
                 className="cta-label text-[#2B5CE6] border border-[rgba(43,92,230,0.30)] px-8 py-3 hover:bg-[rgba(43,92,230,0.08)] transition-colors"
               >
-                Ver servicios
+                {th("cta_services")}
               </a>
               <a
                 href="#contacto"
                 className="cta-label text-[#6B6860] hover:text-[#1A1C20] transition-colors"
               >
-                Contacto →
+                {th("cta_contact")}
               </a>
             </div>
           </div>
@@ -229,41 +260,23 @@ export default function Home() {
       >
         <div className="max-w-[1200px] mx-auto">
           <div className="mb-20">
-            <p className="data-label text-[#4A5568] mb-6 animate-fade-up">Servicios</p>
-            <h2 className="h2-display text-[clamp(32px,4.5vw,56px)] text-[#F0EDE8] animate-fade-up animation-delay-100">
-              Análisis. Estrategia.<br />Ejecución sin ruido.
+            <p className="data-label text-[#4A5568] mb-6 animate-fade-up">{ts("label")}</p>
+            <h2 className="h2-display text-[clamp(32px,4.5vw,56px)] text-[#F0EDE8] animate-fade-up animation-delay-100 whitespace-pre-line">
+              {ts("heading")}
             </h2>
           </div>
 
           <div className="grid md:grid-cols-2 gap-x-16 gap-y-16">
-            <ServiceCard
-              numeral="01"
-              title="Analítica Predictiva"
-              tag="Forecasting"
-              description="Modelos que anticipan tendencias de mercado antes de que el instinto las detecte. Reducimos la incertidumbre a una variable manejable."
-              delay="animation-delay-200"
-            />
-            <ServiceCard
-              numeral="02"
-              title="Arquitectura de Datos"
-              tag="Infrastructure"
-              description="Infraestructuras limpias, escalables y auditables. La información fluye sin fricción. Las decisiones llegan más rápido."
-              delay="animation-delay-300"
-            />
-            <ServiceCard
-              numeral="03"
-              title="Inteligencia de Lenguaje"
-              tag="NLP"
-              description="Extraemos señal de texto no estructurado. Opiniones de mercado, contratos, informes internos: todos hablan. Nosotros los interpretamos."
-              delay="animation-delay-400"
-            />
-            <ServiceCard
-              numeral="04"
-              title="Visualización Analítica"
-              tag="Data Viz"
-              description="Los datos complejos merecen representaciones precisas. Cuadros de mando que informan sin necesidad de explicación."
-              delay="animation-delay-500"
-            />
+            {serviceItems.map((item, i) => (
+              <ServiceCard
+                key={item.numeral}
+                numeral={item.numeral}
+                title={item.title}
+                tag={item.tag}
+                description={item.description}
+                delay={`animation-delay-${(i + 2) * 100}`}
+              />
+            ))}
           </div>
         </div>
       </section>
@@ -277,21 +290,24 @@ export default function Home() {
         <div className="max-w-[1200px] mx-auto">
           <div className="grid md:grid-cols-2 gap-16 items-start">
             <div>
-              <p className="data-label text-[#9E9A94] mb-6 animate-fade-up">Método</p>
-              <h2 className="h2-display text-[clamp(32px,4.5vw,56px)] text-[#1A1C20] animate-fade-up animation-delay-100">
-                Un proceso<br />sin ambigüedades.
+              <p className="data-label text-[#9E9A94] mb-6 animate-fade-up">{tm("label")}</p>
+              <h2 className="h2-display text-[clamp(32px,4.5vw,56px)] text-[#1A1C20] animate-fade-up animation-delay-100 whitespace-pre-line">
+                {tm("heading")}
               </h2>
               <p className="font-serif text-[18px] text-[#6B6860] leading-[1.8] mt-8 animate-fade-up animation-delay-200">
-                Cada proyecto sigue la misma disciplina: primero entender,
-                luego medir, después actuar. Sin atajos.
+                {tm("body")}
               </p>
             </div>
 
             <div className="space-y-10 pt-2">
-              <MethodBar label="Descubrimiento y diagnóstico"       percentage={95} delay="animation-delay-200" />
-              <MethodBar label="Ingeniería de datos"                 percentage={88} delay="animation-delay-300" />
-              <MethodBar label="Modelado y aprendizaje automático"   percentage={92} delay="animation-delay-400" />
-              <MethodBar label="Implementación estratégica"          percentage={85} delay="animation-delay-500" />
+              {methodBars.map((bar, i) => (
+                <MethodBar
+                  key={bar.label}
+                  label={bar.label}
+                  percentage={bar.percentage}
+                  delay={methodDelays[i] ?? "animation-delay-200"}
+                />
+              ))}
             </div>
           </div>
         </div>
@@ -305,10 +321,9 @@ export default function Home() {
       >
         <div className="max-w-[1200px] mx-auto">
           <div className="max-w-3xl">
-            <p className="data-label text-[#4A5568] mb-8 animate-fade-up">Filosofía</p>
-            <blockquote className="h2-display text-[clamp(28px,3.5vw,48px)] text-[#F0EDE8] leading-[1.2] animate-fade-up animation-delay-100">
-              "La inteligencia no es acumular datos.<br />
-              Es saber cuáles importan."
+            <p className="data-label text-[#4A5568] mb-8 animate-fade-up">{tp("label")}</p>
+            <blockquote className="h2-display text-[clamp(28px,3.5vw,48px)] text-[#F0EDE8] leading-[1.2] animate-fade-up animation-delay-100 whitespace-pre-line">
+              {tp("quote")}
             </blockquote>
 
             <div
@@ -316,24 +331,23 @@ export default function Home() {
               className="mt-16 pt-16 border-t border-[#2A3340] animate-fade-up animation-delay-200"
             >
               <h3 className="h3-display text-[clamp(20px,2.5vw,28px)] text-[#F0EDE8] mb-4">
-                Hablemos.
+                {tc("heading")}
               </h3>
               <p className="font-serif text-[18px] text-[#8A9AAA] leading-[1.8] mb-8 max-w-md">
-                Si su empresa toma decisiones importantes y los datos no forman
-                parte de ese proceso, podemos cambiar eso.
+                {tc("body")}
               </p>
               <a
                 href="mailto:hola@providentia.es"
                 className="cta-label text-[#2B5CE6] border border-[rgba(43,92,230,0.30)] px-8 py-3 hover:bg-[rgba(43,92,230,0.08)] transition-colors inline-block"
               >
-                Iniciar conversación
+                {tc("cta")}
               </a>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── V · ÚLTIMAS REFLEXIONES (linen) ── */}
+      {/* ── V · INSIGHTS (linen) ── */}
       <section
         data-theme="light"
         className="bg-[#F7F4EF] px-8 md:px-16 lg:px-24 py-[96px] border-t border-[#D6D0C7]"
@@ -341,46 +355,21 @@ export default function Home() {
         <div className="max-w-[1200px] mx-auto">
           <div className="flex items-end justify-between mb-16">
             <div>
-              <p className="data-label text-[#9E9A94] mb-5">Insights</p>
+              <p className="data-label text-[#9E9A94] mb-5">{ti("label")}</p>
               <h2 className="h2-display text-[clamp(32px,4.5vw,56px)] text-[#1A1C20]">
-                Últimas reflexiones.
+                {ti("heading")}
               </h2>
             </div>
-            <a
+            <Link
               href="/blog"
               className="cta-label text-[#6B6860] hover:text-[#1A1C20] transition-colors hidden md:block"
             >
-              Ver todos los artículos →
-            </a>
+              {ti("cta_all")}
+            </Link>
           </div>
 
           <div className="grid md:grid-cols-3 gap-x-12">
-            {[
-              {
-                slug:     "el-fin-del-marketing-de-suposiciones",
-                category: "Opinión",
-                title:    "El fin del marketing de suposiciones",
-                excerpt:  "Por qué las marcas que siguen tomando decisiones sin datos estructurados están perdiendo terreno cada trimestre.",
-                date:     "15 mayo 2026",
-                readTime: 4,
-              },
-              {
-                slug:     "tres-metricas-que-tu-cmo-deberia-mirar",
-                category: "Estrategia",
-                title:    "Tres métricas que tu CMO debería mirar antes que el ROI",
-                excerpt:  "El ROI es una conclusión, no un indicador. Estas tres métricas previas determinan si una campaña va a funcionar.",
-                date:     "8 mayo 2026",
-                readTime: 3,
-              },
-              {
-                slug:     "datos-2024-comportamiento-consumidor-2025",
-                category: "Tendencias",
-                title:    "Lo que los datos de 2024 nos dicen sobre el consumidor en 2025",
-                excerpt:  "Análisis de patrones extraídos de más de 40 campañas para anticipar cómo va a comprar tu cliente el próximo año.",
-                date:     "2 mayo 2026",
-                readTime: 4,
-              },
-            ].map((post) => (
+            {articles.map((post) => (
               <div key={post.slug} className="border-t border-[#D6D0C7] pt-7">
                 <span
                   className="font-mono text-[11px] tracking-[0.15em] uppercase"
@@ -388,17 +377,23 @@ export default function Home() {
                 >
                   {post.category}
                 </span>
-                <a
-                  href={`/blog/${post.slug}`}
+                <Link
+                  href={`/blog/${post.slug}` as any}
                   className="block mt-3 mb-3 font-display italic font-light leading-[1.2] text-[#1A1C20] hover:text-[#2B5CE6] transition-colors"
                   style={{ fontFamily: "var(--font-cormorant), serif", fontSize: "clamp(20px,2vw,24px)" }}
                 >
                   {post.title}
-                </a>
+                </Link>
                 <p
                   className="text-[#6B6860] leading-[1.7] mb-4"
-                  style={{ fontFamily: "var(--font-cormorant), serif", fontSize: "17px",
-                           display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden" } as React.CSSProperties}
+                  style={{
+                    fontFamily: "var(--font-cormorant), serif",
+                    fontSize: "17px",
+                    display: "-webkit-box",
+                    WebkitLineClamp: 2,
+                    WebkitBoxOrient: "vertical",
+                    overflow: "hidden",
+                  } as React.CSSProperties}
                 >
                   {post.excerpt}
                 </p>
@@ -406,16 +401,16 @@ export default function Home() {
                   className="text-[11px] tracking-[0.10em]"
                   style={{ fontFamily: "var(--font-jetbrains), monospace", color: "#9E9A94" }}
                 >
-                  {post.date} · {post.readTime} min de lectura
+                  {post.date} · {post.readTime} min
                 </span>
               </div>
             ))}
           </div>
 
           <div className="mt-12 md:hidden">
-            <a href="/blog" className="cta-label text-[#6B6860] hover:text-[#1A1C20] transition-colors">
-              Ver todos los artículos →
-            </a>
+            <Link href="/blog" className="cta-label text-[#6B6860] hover:text-[#1A1C20] transition-colors">
+              {ti("cta_all")}
+            </Link>
           </div>
         </div>
       </section>
@@ -426,30 +421,40 @@ export default function Home() {
         className="bg-[#F7F4EF] border-t border-[#D6D0C7] px-8 md:px-16 lg:px-24 py-12"
       >
         <div className="max-w-[1200px] mx-auto flex flex-col md:flex-row justify-between items-start gap-8">
-          <div className="flex items-center gap-3">
+          <Link href="/" className="flex items-center gap-3">
             <Logo className="w-5 h-5" onDark={false} />
             <span className="font-display italic text-[#1A1C20] text-lg">Providentia</span>
-          </div>
+          </Link>
 
           <nav className="flex flex-wrap gap-x-8 gap-y-3">
             {[
-              { label: "Servicios", href: "#servicios" },
-              { label: "Método",    href: "#metodo"    },
-              { label: "Insights",  href: "/blog"      },
-              { label: "Filosofía", href: "#filosofia" },
-              { label: "Contacto",  href: "#contacto"  },
-            ].map(({ label, href }) => (
-              <a
-                key={label}
-                href={href}
-                className="nav-label text-[#6B6860] hover:text-[#1A1C20] transition-colors"
-              >
-                {label}
-              </a>
+              { labelKey: "services"   as const, href: "#servicios" },
+              { labelKey: "method"     as const, href: "#metodo"    },
+              { labelKey: "insights"   as const, href: "/blog"      },
+              { labelKey: "philosophy" as const, href: "#filosofia" },
+              { labelKey: "contact"    as const, href: "#contacto"  },
+            ].map(({ labelKey, href }) => (
+              href.startsWith("#") ? (
+                <a
+                  key={labelKey}
+                  href={href}
+                  className="nav-label text-[#6B6860] hover:text-[#1A1C20] transition-colors"
+                >
+                  {t(`nav.${labelKey}`)}
+                </a>
+              ) : (
+                <Link
+                  key={labelKey}
+                  href={href as "/blog"}
+                  className="nav-label text-[#6B6860] hover:text-[#1A1C20] transition-colors"
+                >
+                  {t(`nav.${labelKey}`)}
+                </Link>
+              )
             ))}
           </nav>
 
-          <span className="data-label text-[#9E9A94]">© MMXXVI · Barcelona</span>
+          <span className="data-label text-[#9E9A94]">{tf("copyright")}</span>
         </div>
       </footer>
     </div>

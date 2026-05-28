@@ -1,10 +1,14 @@
 import Script from "next/script"
-import Link from "next/link"
 import Image from "next/image"
+import { getTranslations } from "next-intl/server"
+import { Link } from "@/i18n/navigation"
 import { BlogNavbar } from "./_navbar"
 import "@/styles/blog.css"
 
-function BlogFooter() {
+async function BlogFooter() {
+  const t = await getTranslations("nav")
+  const tf = await getTranslations("footer")
+
   return (
     <footer
       data-theme="light"
@@ -24,19 +28,23 @@ function BlogFooter() {
 
         <nav className="flex flex-wrap gap-x-8 gap-y-3">
           {[
-            { label: "Servicios",  href: "/#servicios"  },
-            { label: "Método",     href: "/#metodo"     },
-            { label: "Insights",   href: "/blog"        },
-            { label: "Filosofía",  href: "/#filosofia"  },
-            { label: "Contacto",   href: "/#contacto"   },
-          ].map(({ label, href }) => (
-            <Link key={label} href={href} className="nav-label text-[#6B6860] hover:text-[#1A1C20] transition-colors">
-              {label}
+            { labelKey: "services"   as const, href: "/#servicios"  },
+            { labelKey: "method"     as const, href: "/#metodo"     },
+            { labelKey: "insights"   as const, href: "/blog"        },
+            { labelKey: "philosophy" as const, href: "/#filosofia"  },
+            { labelKey: "contact"    as const, href: "/#contacto"   },
+          ].map(({ labelKey, href }) => (
+            <Link
+              key={labelKey}
+              href={href as any}
+              className="nav-label text-[#6B6860] hover:text-[#1A1C20] transition-colors"
+            >
+              {t(labelKey)}
             </Link>
           ))}
         </nav>
 
-        <span className="data-label text-[#9E9A94]">© MMXXVI · Barcelona</span>
+        <span className="data-label text-[#9E9A94]">{tf("copyright")}</span>
       </div>
     </footer>
   )

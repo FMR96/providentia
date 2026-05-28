@@ -1,10 +1,13 @@
 "use client"
 
 import Image from "next/image"
-import Link from "next/link"
+import { useTranslations } from "next-intl"
+import { Link } from "@/i18n/navigation"
+import { LocaleSwitcher } from "@/components/locale-switcher"
 import { useEffect, useState } from "react"
 
 export function BlogNavbar() {
+  const t = useTranslations("nav")
   const [scrolled, setScrolled] = useState(false)
   const [overDark, setOverDark] = useState(false)
 
@@ -63,32 +66,35 @@ export function BlogNavbar() {
 
         <div className="hidden md:flex items-center gap-10">
           {[
-            { label: "Servicios",  href: "/#servicios"  },
-            { label: "Método",     href: "/#metodo"     },
-            { label: "Insights",   href: "/blog"        },
-            { label: "Filosofía",  href: "/#filosofia"  },
-          ].map(({ label, href }) => (
+            { labelKey: "services"   as const, href: "/#servicios"  },
+            { labelKey: "method"     as const, href: "/#metodo"     },
+            { labelKey: "insights"   as const, href: "/blog"        },
+            { labelKey: "philosophy" as const, href: "/#filosofia"  },
+          ].map(({ labelKey, href }) => (
             <Link
-              key={label}
-              href={href}
+              key={labelKey}
+              href={href as any}
               className="nav-label transition-colors duration-300"
               style={{ color: textSub }}
             >
-              {label}
+              {t(labelKey)}
             </Link>
           ))}
         </div>
 
-        <Link
-          href="/#contacto"
-          className="hidden md:inline-block cta-label px-5 py-2 transition-colors duration-300"
-          style={{
-            color: "#2B5CE6",
-            border: "1px solid rgba(43,92,230,0.30)",
-          }}
-        >
-          Contacto
-        </Link>
+        <div className="hidden md:flex items-center gap-6">
+          <LocaleSwitcher onDark={overDark} />
+          <Link
+            href="/#contacto"
+            className="cta-label px-5 py-2 transition-colors duration-300"
+            style={{
+              color: "#2B5CE6",
+              border: "1px solid rgba(43,92,230,0.30)",
+            }}
+          >
+            {t("contact")}
+          </Link>
+        </div>
       </div>
     </nav>
   )

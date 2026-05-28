@@ -4,7 +4,7 @@ import matter from 'gray-matter'
 import { remark } from 'remark'
 import html from 'remark-html'
 
-const postsDirectory = path.join(process.cwd(), 'content/posts')
+const postsBaseDirectory = path.join(process.cwd(), 'content/posts')
 
 export interface PostMeta {
   slug: string
@@ -56,8 +56,9 @@ function addIdsToH2(htmlContent: string): string {
   })
 }
 
-export async function getPost(slug: string): Promise<Post | null> {
+export async function getPost(slug: string, locale = 'es'): Promise<Post | null> {
   try {
+    const postsDirectory = path.join(postsBaseDirectory, locale)
     const fullPath = path.join(postsDirectory, `${slug}.md`)
     const fileContents = fs.readFileSync(fullPath, 'utf8')
     const { data, content } = matter(fileContents)
@@ -83,7 +84,8 @@ export async function getPost(slug: string): Promise<Post | null> {
   }
 }
 
-export function getAllPostsMeta(): PostMeta[] {
+export function getAllPostsMeta(locale = 'es'): PostMeta[] {
+  const postsDirectory = path.join(postsBaseDirectory, locale)
   if (!fs.existsSync(postsDirectory)) return []
   const files = fs
     .readdirSync(postsDirectory)
@@ -109,8 +111,8 @@ export function getAllPostsMeta(): PostMeta[] {
     .sort((a, b) => new Date(b.dateISO).getTime() - new Date(a.dateISO).getTime())
 }
 
-export function getRelatedPosts(currentSlug: string, category: string, count = 2): PostMeta[] {
-  const all = getAllPostsMeta()
+export function getRelatedPosts(currentSlug: string, category: string, count = 2, locale = 'es'): PostMeta[] {
+  const all = getAllPostsMeta(locale)
   const sameCategory = all.filter(p => p.slug !== currentSlug && p.category === category)
   if (sameCategory.length >= count) return sameCategory.slice(0, count)
   const others = all.filter(p => p.slug !== currentSlug && p.category !== category)

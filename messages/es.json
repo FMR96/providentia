@@ -7,7 +7,7 @@
     "contact": "Contacto"
   },
   "hero": {
-    "tagline": "Barcelona · Inteligencia analítica",
+    "tagline": "Inteligencia analítica",
     "headline": "Los datos dicen\nlo que el instinto\nno puede confirmar.",
     "body": "Providentia es una agencia de inteligencia analítica.\nTrabajamos con un número reducido de clientes.\nLos elegimos con cuidado.",
     "cta_services": "Ver servicios",
@@ -96,7 +96,7 @@
     ]
   },
   "footer": {
-    "copyright": "© MMXXVI · Barcelona"
+    "copyright": "© MMXXVI"
   },
   "blog_listing": {
     "meta_title": "Insights — Providentia",

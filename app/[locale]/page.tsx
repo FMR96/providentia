@@ -177,61 +177,26 @@ function ServiceCard({
   )
 }
 
-function MethodBar({
+function MethodStep({
+  numeral,
   label,
-  percentage,
+  description,
   delay,
 }: {
+  numeral: string
   label: string
-  percentage: number
+  description: string
   delay: string
 }) {
-  const barRef       = useRef<HTMLDivElement>(null)
-  const containerRef = useRef<HTMLDivElement>(null)
-  const [displayPercent, setDisplayPercent] = useState(0)
-  const hasAnimated = useRef(false)
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && !hasAnimated.current) {
-            hasAnimated.current = true
-            setTimeout(() => {
-              if (barRef.current) barRef.current.style.width = `${percentage}%`
-            }, 300)
-            const duration = 2000
-            const start = performance.now()
-            const tick = (now: number) => {
-              const t = Math.min((now - start) / duration, 1)
-              const eased = 1 - Math.pow(1 - t, 3)
-              setDisplayPercent(Math.round(eased * percentage))
-              if (t < 1) requestAnimationFrame(tick)
-            }
-            requestAnimationFrame(tick)
-          }
-        })
-      },
-      { threshold: 0.5 }
-    )
-    if (containerRef.current) observer.observe(containerRef.current)
-    return () => observer.disconnect()
-  }, [percentage])
-
   return (
-    <div ref={containerRef} className={`animate-fade-up ${delay}`}>
-      <div className="flex justify-between mb-3">
-        <span className="data-label" style={{ color: "var(--text-dark)" }}>{label}</span>
-        <span className="metric-display text-sm" style={{ color: "var(--text-muted)" }}>
-          {displayPercent}<span className="text-[10px] opacity-60 ml-0.5">%</span>
-        </span>
-      </div>
-      <div className="h-[1px] relative" style={{ background: "rgba(142, 165, 140, 0.20)" }}>
-        <div
-          ref={barRef}
-          className="absolute top-0 left-0 h-full transition-all duration-[2000ms] ease-out"
-          style={{ width: "0%", background: "var(--moss)" }}
-        />
+    <div
+      className={`flex gap-6 animate-fade-up ${delay}`}
+      style={{ borderTop: "1px solid var(--border-light)", paddingTop: "24px" }}
+    >
+      <span className="metric-display text-sm shrink-0 w-6" style={{ color: "var(--text-muted)" }}>{numeral}</span>
+      <div>
+        <p className="data-label mb-1" style={{ color: "var(--text-dark)" }}>{label}</p>
+        <p className="font-serif text-[16px] leading-[1.7]" style={{ color: "var(--text-mid)" }}>{description}</p>
       </div>
     </div>
   )
@@ -248,7 +213,7 @@ export default function Home() {
   const tf = useTranslations("footer")
 
   const serviceItems = ts.raw("items") as Array<{ numeral: string; title: string; tag: string; description: string }>
-  const methodBars   = tm.raw("bars") as Array<{ label: string; percentage: number }>
+  const methodSteps  = tm.raw("steps") as Array<{ numeral: string; label: string; description: string }>
   const articles     = ti.raw("articles") as Array<{ slug: string; category: string; title: string; excerpt: string; date: string; readTime: number }>
 
   const methodDelays = ["animation-delay-200", "animation-delay-300", "animation-delay-400", "animation-delay-500"]
@@ -343,12 +308,13 @@ export default function Home() {
               </p>
             </div>
 
-            <div className="space-y-10 pt-2">
-              {methodBars.map((bar, i) => (
-                <MethodBar
-                  key={bar.label}
-                  label={bar.label}
-                  percentage={bar.percentage}
+            <div className="space-y-0 pt-2">
+              {methodSteps.map((step, i) => (
+                <MethodStep
+                  key={step.numeral}
+                  numeral={step.numeral}
+                  label={step.label}
+                  description={step.description}
                   delay={methodDelays[i] ?? "animation-delay-200"}
                 />
               ))}
@@ -391,10 +357,10 @@ export default function Home() {
               </p>
               <a
                 href="mailto:hola@providentia.es"
-                className="cta-label px-8 py-3 transition-colors inline-block"
-                style={{ color: "var(--signal-inv)", border: "1px solid var(--border-dark)" }}
+                className="cta-label transition-colors"
+                style={{ color: "var(--sage)" }}
               >
-                {tc("cta")}
+                hola@providentia.es →
               </a>
             </div>
           </div>

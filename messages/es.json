@@ -47,11 +47,11 @@
     "label": "Método",
     "heading": "Un proceso\nsin ambigüedades.",
     "body": "Cada proyecto sigue la misma disciplina: primero entender, luego medir, después actuar. Sin atajos.",
-    "bars": [
-      { "label": "Descubrimiento y diagnóstico", "percentage": 95 },
-      { "label": "Ingeniería de datos", "percentage": 88 },
-      { "label": "Modelado y aprendizaje automático", "percentage": 92 },
-      { "label": "Implementación estratégica", "percentage": 85 }
+    "steps": [
+      { "numeral": "01", "label": "Descubrimiento", "description": "Entender antes de opinar." },
+      { "numeral": "02", "label": "Diagnóstico de datos", "description": "Medir lo que importa. Descartar lo que no." },
+      { "numeral": "03", "label": "Modelado", "description": "Convertir señal en decisión." },
+      { "numeral": "04", "label": "Implementación", "description": "Ejecutar. Medir. Ajustar." }
     ]
   },
   "philosophy": {
@@ -61,7 +61,7 @@
   "contact": {
     "heading": "Hablemos.",
     "body": "Si su empresa toma decisiones importantes y los datos no forman parte de ese proceso, podemos cambiar eso.",
-    "cta": "Iniciar conversación"
+    "cta": ""
   },
   "insights": {
     "label": "Insights",

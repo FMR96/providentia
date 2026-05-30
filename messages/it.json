@@ -47,11 +47,11 @@
     "label": "Metodo",
     "heading": "Un processo\nsenza ambiguità.",
     "body": "Ogni progetto segue la stessa disciplina: prima capire, poi misurare, poi agire. Senza scorciatoie.",
-    "bars": [
-      { "label": "Scoperta e diagnosi", "percentage": 95 },
-      { "label": "Ingegneria dei dati", "percentage": 88 },
-      { "label": "Modellazione e machine learning", "percentage": 92 },
-      { "label": "Implementazione strategica", "percentage": 85 }
+    "steps": [
+      { "numeral": "01", "label": "Scoperta", "description": "Capire prima di opinare." },
+      { "numeral": "02", "label": "Diagnosi dei dati", "description": "Misurare ciò che conta. Scartare il resto." },
+      { "numeral": "03", "label": "Modellazione", "description": "Trasformare il segnale in decisione." },
+      { "numeral": "04", "label": "Implementazione", "description": "Eseguire. Misurare. Correggere." }
     ]
   },
   "philosophy": {
@@ -61,7 +61,7 @@
   "contact": {
     "heading": "Parliamoci.",
     "body": "Se la tua azienda prende decisioni importanti e i dati non fanno parte di quel processo, possiamo cambiarlo.",
-    "cta": "Inizia una conversazione"
+    "cta": ""
   },
   "insights": {
     "label": "Insights",

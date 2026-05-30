@@ -47,11 +47,11 @@
     "label": "Method",
     "heading": "A process\nwithout ambiguity.",
     "body": "Every project follows the same discipline: first understand, then measure, then act. No shortcuts.",
-    "bars": [
-      { "label": "Discovery and diagnosis", "percentage": 95 },
-      { "label": "Data engineering", "percentage": 88 },
-      { "label": "Modelling and machine learning", "percentage": 92 },
-      { "label": "Strategic implementation", "percentage": 85 }
+    "steps": [
+      { "numeral": "01", "label": "Discovery", "description": "Understand before opining." },
+      { "numeral": "02", "label": "Data diagnosis", "description": "Measure what matters. Discard what doesn't." },
+      { "numeral": "03", "label": "Modelling", "description": "Turn signal into decision." },
+      { "numeral": "04", "label": "Implementation", "description": "Execute. Measure. Adjust." }
     ]
   },
   "philosophy": {
@@ -61,7 +61,7 @@
   "contact": {
     "heading": "Let's talk.",
     "body": "If your company makes important decisions and data is not part of that process, we can change that.",
-    "cta": "Start a conversation"
+    "cta": ""
   },
   "insights": {
     "label": "Insights",

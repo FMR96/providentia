@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- Home -->
+  <url>
+    <loc>https://providentia.es/</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://providentia.es/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://providentia.es/en"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://providentia.es/it"/>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Blog listing -->
+  <url>
+    <loc>https://providentia.es/blog</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://providentia.es/blog"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://providentia.es/en/blog"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://providentia.es/it/blog"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- ES blog posts -->
+  <url>
+    <loc>https://providentia.es/blog/el-fin-del-marketing-de-suposiciones</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://providentia.es/blog/el-fin-del-marketing-de-suposiciones"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://providentia.es/en/blog/the-end-of-assumption-based-marketing"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://providentia.es/it/blog/la-fine-del-marketing-per-supposizioni"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://providentia.es/blog/tres-metricas-que-tu-cmo-deberia-mirar</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://providentia.es/blog/tres-metricas-que-tu-cmo-deberia-mirar"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://providentia.es/en/blog/three-metrics-before-roi"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://providentia.es/it/blog/tre-metriche-prima-del-roi"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://providentia.es/blog/datos-2024-comportamiento-consumidor-2025</loc>
+    <xhtml:link rel="alternate" hreflang="es" href="https://providentia.es/blog/datos-2024-comportamiento-consumidor-2025"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://providentia.es/en/blog/consumer-behavior-trends-2025"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://providentia.es/it/blog/dati-2024-comportamento-consumatori-2025"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+</urlset>

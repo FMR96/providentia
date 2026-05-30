@@ -1,0 +1,125 @@
+{
+  "nav": {
+    "services": "Services",
+    "method": "Method",
+    "insights": "Insights",
+    "philosophy": "Philosophy",
+    "contact": "Contact"
+  },
+  "hero": {
+    "tagline": "Barcelona · Analytical intelligence",
+    "headline": "Data says\nwhat instinct\ncannot confirm.",
+    "body": "Providentia is an analytical intelligence agency.\nWe work with a select number of clients.\nWe choose them carefully.",
+    "cta_services": "Our services",
+    "cta_contact": "Contact →"
+  },
+  "services": {
+    "label": "Services",
+    "heading": "Analysis. Strategy.\nExecution without noise.",
+    "items": [
+      {
+        "numeral": "01",
+        "title": "Predictive Analytics",
+        "tag": "Forecasting",
+        "description": "Models that anticipate market trends before instinct detects them. We reduce uncertainty to a manageable variable."
+      },
+      {
+        "numeral": "02",
+        "title": "Data Architecture",
+        "tag": "Infrastructure",
+        "description": "Clean, scalable, and auditable infrastructures. Information flows without friction. Decisions arrive faster."
+      },
+      {
+        "numeral": "03",
+        "title": "Language Intelligence",
+        "tag": "NLP",
+        "description": "We extract signal from unstructured text. Market opinions, contracts, internal reports: they all speak. We interpret them."
+      },
+      {
+        "numeral": "04",
+        "title": "Analytical Visualisation",
+        "tag": "Data Viz",
+        "description": "Complex data deserves precise representations. Dashboards that inform without the need for explanation."
+      }
+    ]
+  },
+  "method": {
+    "label": "Method",
+    "heading": "A process\nwithout ambiguity.",
+    "body": "Every project follows the same discipline: first understand, then measure, then act. No shortcuts.",
+    "bars": [
+      { "label": "Discovery and diagnosis", "percentage": 95 },
+      { "label": "Data engineering", "percentage": 88 },
+      { "label": "Modelling and machine learning", "percentage": 92 },
+      { "label": "Strategic implementation", "percentage": 85 }
+    ]
+  },
+  "philosophy": {
+    "label": "Philosophy",
+    "quote": "\"Intelligence is not accumulating data.\nIt is knowing which ones matter.\""
+  },
+  "contact": {
+    "heading": "Let's talk.",
+    "body": "If your company makes important decisions and data is not part of that process, we can change that.",
+    "cta": "Start a conversation"
+  },
+  "insights": {
+    "label": "Insights",
+    "heading": "Latest reflections.",
+    "cta_all": "View all articles →",
+    "read_time": "{n} min read",
+    "articles": [
+      {
+        "slug": "the-end-of-assumption-based-marketing",
+        "category": "Opinion",
+        "title": "The end of assumption-based marketing",
+        "excerpt": "Why brands that keep making decisions without structured data are losing ground every quarter.",
+        "date": "15 May 2026",
+        "readTime": 4
+      },
+      {
+        "slug": "three-metrics-before-roi",
+        "category": "Strategy",
+        "title": "Three metrics your CMO should look at before ROI",
+        "excerpt": "ROI is a conclusion, not an indicator. These three preceding metrics determine whether a campaign will work.",
+        "date": "8 May 2026",
+        "readTime": 3
+      },
+      {
+        "slug": "consumer-behavior-trends-2025",
+        "category": "Trends",
+        "title": "What 2024 data tells us about the consumer in 2025",
+        "excerpt": "Analysis of patterns extracted from more than 40 campaigns to anticipate how your customer will buy next year.",
+        "date": "2 May 2026",
+        "readTime": 4
+      }
+    ]
+  },
+  "footer": {
+    "copyright": "© MMXXVI · Barcelona"
+  },
+  "blog_listing": {
+    "meta_title": "Insights — Providentia",
+    "meta_description": "Opinion pieces and trends on marketing, data and business strategy.",
+    "tagline": "Providentia · Insights",
+    "heading": "Reflections on\ndata and strategy.",
+    "categories": ["All", "Opinion", "Strategy", "Trends", "Data"],
+    "load_more": "Load more articles",
+    "read_time": "{n} min read",
+    "read_article": "Read article →"
+  },
+  "blog_article": {
+    "breadcrumb_home": "Home",
+    "breadcrumb_blog": "Insights",
+    "read_time": "{n} min read",
+    "toc_label": "In this article",
+    "share_label": "Share",
+    "share_linkedin": "LinkedIn",
+    "share_twitter": "X / Twitter",
+    "share_copy": "Copy link",
+    "related_label": "You might also like",
+    "cta_heading": "Want to apply this\nto your company?",
+    "cta_body": "Let's talk. No commitment and no fifty-slide presentations.",
+    "cta_btn": "Start a conversation"
+  }
+}

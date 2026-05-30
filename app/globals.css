@@ -1,0 +1,254 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* ── Paleta base ── */
+  --sage-hint:   #BFCFBB;
+  --mint:        #BFCFBB;
+  --sage:        #8EA58C;
+  --moss:        #738A6E;
+  --evergreen:   #344C3D;
+
+  /* ── Fondos ── */
+  --bg-light:    #F4F7F3;
+  --bg-light-2:  #EBF0E9;
+  --bg-dark:     #1E2E24;
+  --bg-dark-2:   #253B2C;
+
+  /* ── Texto ── */
+  --text-dark:   #1A2B20;
+  --text-mid:    #4A6354;
+  --text-light:  #EBF0E9;
+  --text-muted:  #8EA58C;
+
+  /* ── Acento único ── */
+  --signal:      #344C3D;
+  --signal-inv:  #BFCFBB;
+
+  /* ── Bordes ── */
+  --border-light: rgba(142, 165, 140, 0.25);
+  --border-dark:  rgba(191, 207, 187, 0.15);
+
+  /* ── Glass ── */
+  --glass-light:        rgba(235, 240, 233, 0.65);
+  --glass-dark:         rgba(30, 46, 36, 0.60);
+  --glass-border-light: rgba(142, 165, 140, 0.20);
+  --glass-border-dark:  rgba(191, 207, 187, 0.12);
+
+  /* ── Aliases para compatibilidad con blog.css y clases heredadas ── */
+  --linen:           var(--bg-light);
+  --parchment:       var(--bg-light-2);
+  --warm-rule:       var(--border-light);
+  --midnight:        var(--bg-dark);
+  --deep-slate:      var(--bg-dark-2);
+  --cool-rule:       var(--border-dark);
+  --signal-muted:    var(--bg-dark-2);
+  --signal-ghost:    rgba(52, 76, 61, 0.10);
+  --ink:             var(--text-dark);
+  --ink-secondary:   var(--text-mid);
+  --ink-muted:       var(--text-muted);
+  --chalk:           var(--text-light);
+  --chalk-secondary: var(--sage);
+  --chalk-muted:     var(--text-muted);
+
+  /* ── Semánticos Tailwind ── */
+  --background:             var(--bg-light);
+  --foreground:             var(--text-dark);
+  --card:                   var(--bg-light-2);
+  --card-foreground:        var(--text-dark);
+  --popover:                var(--bg-light-2);
+  --popover-foreground:     var(--text-dark);
+  --primary:                var(--signal);
+  --primary-foreground:     var(--text-light);
+  --secondary:              var(--bg-dark-2);
+  --secondary-foreground:   var(--text-light);
+  --muted:                  var(--bg-light-2);
+  --muted-foreground:       var(--text-mid);
+  --accent:                 var(--signal);
+  --accent-foreground:      var(--text-light);
+  --destructive:            #C0392B;
+  --destructive-foreground: #ffffff;
+  --border:                 var(--border-light);
+  --input:                  var(--bg-light-2);
+  --ring:                   var(--signal);
+  --radius:                 0.125rem;
+}
+
+@theme inline {
+  --font-sans:    var(--font-cormorant), 'Georgia', serif;
+  --font-serif:   var(--font-cormorant), 'Georgia', serif;
+  --font-mono:    var(--font-jetbrains), 'Courier New', monospace;
+  --font-display: var(--font-cormorant), 'Georgia', serif;
+  --font-data:    var(--font-jetbrains), 'Courier New', monospace;
+
+  --color-background:             var(--background);
+  --color-foreground:             var(--foreground);
+  --color-card:                   var(--card);
+  --color-card-foreground:        var(--card-foreground);
+  --color-popover:                var(--popover);
+  --color-popover-foreground:     var(--popover-foreground);
+  --color-primary:                var(--primary);
+  --color-primary-foreground:     var(--primary-foreground);
+  --color-secondary:              var(--secondary);
+  --color-secondary-foreground:   var(--secondary-foreground);
+  --color-muted:                  var(--muted);
+  --color-muted-foreground:       var(--muted-foreground);
+  --color-accent:                 var(--accent);
+  --color-accent-foreground:      var(--accent-foreground);
+  --color-destructive:            var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border:                 var(--border);
+  --color-input:                  var(--input);
+  --color-ring:                   var(--ring);
+
+  /* Tokens sage */
+  --color-sage-hint:  var(--sage-hint);
+  --color-sage:       var(--sage);
+  --color-moss:       var(--moss);
+  --color-evergreen:  var(--evergreen);
+  --color-bg-light:   var(--bg-light);
+  --color-bg-dark:    var(--bg-dark);
+  --color-signal:     var(--signal);
+
+  /* Tokens legacy (backward compat) */
+  --color-linen:      var(--linen);
+  --color-parchment:  var(--parchment);
+  --color-midnight:   var(--midnight);
+  --color-deep-slate: var(--deep-slate);
+  --color-ink:        var(--ink);
+  --color-chalk:      var(--chalk);
+
+  --radius-sm: var(--radius);
+  --radius-md: calc(var(--radius) + 0.125rem);
+  --radius-lg: calc(var(--radius) + 0.25rem);
+  --radius-xl: calc(var(--radius) + 0.375rem);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* ── Fade up ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.7s ease-out forwards;
+  opacity: 0;
+}
+
+.animation-delay-100 { animation-delay: 0.10s; }
+.animation-delay-200 { animation-delay: 0.20s; }
+.animation-delay-300 { animation-delay: 0.30s; }
+.animation-delay-400 { animation-delay: 0.40s; }
+.animation-delay-500 { animation-delay: 0.50s; }
+.animation-delay-600 { animation-delay: 0.60s; }
+
+/* ── Tipografía ── */
+.h1-display {
+  font-family: var(--font-cormorant), serif;
+  font-style: italic;
+  font-weight: 300;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+}
+
+.h2-display {
+  font-family: var(--font-cormorant), serif;
+  font-style: italic;
+  font-weight: 300;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+.h3-display {
+  font-family: var(--font-cormorant), serif;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+.metric-display {
+  font-family: var(--font-jetbrains), monospace;
+  font-weight: 300;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+}
+
+.data-label {
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.nav-label {
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.cta-label {
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+/* ── Glass — sage orgánico ── */
+.glass-light {
+  background: var(--glass-light);
+  backdrop-filter: blur(20px) saturate(130%);
+  -webkit-backdrop-filter: blur(20px) saturate(130%);
+  border: 1px solid var(--glass-border-light);
+  border-top: 1px solid rgba(191, 207, 187, 0.40);
+  border-radius: 2px;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.50),
+    0 4px 24px rgba(52, 76, 61, 0.08);
+}
+
+.glass-dark {
+  background: var(--glass-dark);
+  backdrop-filter: blur(24px) saturate(120%);
+  -webkit-backdrop-filter: blur(24px) saturate(120%);
+  border: 1px solid var(--glass-border-dark);
+  border-top: 1px solid rgba(191, 207, 187, 0.18);
+  border-radius: 2px;
+  box-shadow:
+    inset 0 1px 0 rgba(191, 207, 187, 0.06),
+    0 8px 32px rgba(20, 35, 25, 0.40);
+}
+
+@supports not (backdrop-filter: blur(1px)) {
+  .glass-light { background: rgba(235, 240, 233, 0.95); }
+  .glass-dark  { background: rgba(30, 46, 36, 0.95); }
+}
+
+/* ── Signal badge — contexto oscuro ── */
+.signal-badge {
+  display: inline-block;
+  background: rgba(191, 207, 187, 0.10);
+  border: 1px solid rgba(191, 207, 187, 0.18);
+  color: var(--text-muted);
+  border-radius: 2px;
+  padding: 3px 10px;
+  font-family: var(--font-jetbrains), monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  font-weight: 400;
+  text-transform: uppercase;
+}

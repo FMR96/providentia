@@ -1,0 +1,125 @@
+{
+  "nav": {
+    "services": "Servizi",
+    "method": "Metodo",
+    "insights": "Insights",
+    "philosophy": "Filosofia",
+    "contact": "Contatto"
+  },
+  "hero": {
+    "tagline": "Barcellona · Intelligenza analitica",
+    "headline": "I dati dicono\nciò che l'istinto\nnon può confermare.",
+    "body": "Providentia è un'agenzia di intelligenza analitica.\nLavoriamo con un numero selezionato di clienti.\nLi scegliamo con cura.",
+    "cta_services": "I nostri servizi",
+    "cta_contact": "Contatto →"
+  },
+  "services": {
+    "label": "Servizi",
+    "heading": "Analisi. Strategia.\nEsecuzione senza rumore.",
+    "items": [
+      {
+        "numeral": "01",
+        "title": "Analisi Predittiva",
+        "tag": "Forecasting",
+        "description": "Modelli che anticipano le tendenze di mercato prima che l'istinto le rilevi. Riduciamo l'incertezza a una variabile gestibile."
+      },
+      {
+        "numeral": "02",
+        "title": "Architettura dei Dati",
+        "tag": "Infrastructure",
+        "description": "Infrastrutture pulite, scalabili e verificabili. Le informazioni scorrono senza attrito. Le decisioni arrivano più velocemente."
+      },
+      {
+        "numeral": "03",
+        "title": "Intelligenza Linguistica",
+        "tag": "NLP",
+        "description": "Estraiamo segnale dal testo non strutturato. Opinioni di mercato, contratti, report interni: parlano tutti. Noi li interpretiamo."
+      },
+      {
+        "numeral": "04",
+        "title": "Visualizzazione Analitica",
+        "tag": "Data Viz",
+        "description": "I dati complessi meritano rappresentazioni precise. Dashboard che informano senza bisogno di spiegazioni."
+      }
+    ]
+  },
+  "method": {
+    "label": "Metodo",
+    "heading": "Un processo\nsenza ambiguità.",
+    "body": "Ogni progetto segue la stessa disciplina: prima capire, poi misurare, poi agire. Senza scorciatoie.",
+    "bars": [
+      { "label": "Scoperta e diagnosi", "percentage": 95 },
+      { "label": "Ingegneria dei dati", "percentage": 88 },
+      { "label": "Modellazione e machine learning", "percentage": 92 },
+      { "label": "Implementazione strategica", "percentage": 85 }
+    ]
+  },
+  "philosophy": {
+    "label": "Filosofia",
+    "quote": "\"L'intelligenza non è accumulare dati.\nÈ sapere quali contano.\""
+  },
+  "contact": {
+    "heading": "Parliamoci.",
+    "body": "Se la tua azienda prende decisioni importanti e i dati non fanno parte di quel processo, possiamo cambiarlo.",
+    "cta": "Inizia una conversazione"
+  },
+  "insights": {
+    "label": "Insights",
+    "heading": "Ultime riflessioni.",
+    "cta_all": "Vedi tutti gli articoli →",
+    "read_time": "{n} min di lettura",
+    "articles": [
+      {
+        "slug": "la-fine-del-marketing-per-supposizioni",
+        "category": "Opinione",
+        "title": "La fine del marketing per supposizioni",
+        "excerpt": "Perché i brand che continuano a prendere decisioni senza dati strutturati perdono terreno ogni trimestre.",
+        "date": "15 maggio 2026",
+        "readTime": 4
+      },
+      {
+        "slug": "tre-metriche-prima-del-roi",
+        "category": "Strategia",
+        "title": "Tre metriche che il tuo CMO dovrebbe guardare prima del ROI",
+        "excerpt": "Il ROI è una conclusione, non un indicatore. Queste tre metriche preliminari determinano se una campagna funzionerà.",
+        "date": "8 maggio 2026",
+        "readTime": 3
+      },
+      {
+        "slug": "dati-2024-comportamento-consumatori-2025",
+        "category": "Tendenze",
+        "title": "Cosa ci dicono i dati del 2024 sul consumatore nel 2025",
+        "excerpt": "Analisi di pattern estratti da più di 40 campagne per anticipare come acquisterà il tuo cliente il prossimo anno.",
+        "date": "2 maggio 2026",
+        "readTime": 4
+      }
+    ]
+  },
+  "footer": {
+    "copyright": "© MMXXVI · Barcellona"
+  },
+  "blog_listing": {
+    "meta_title": "Insights — Providentia",
+    "meta_description": "Articoli di opinione e tendenze su marketing, dati e strategia aziendale.",
+    "tagline": "Providentia · Insights",
+    "heading": "Riflessioni su\ndati e strategia.",
+    "categories": ["Tutti", "Opinione", "Strategia", "Tendenze", "Dati"],
+    "load_more": "Carica altri articoli",
+    "read_time": "{n} min di lettura",
+    "read_article": "Leggi l'articolo →"
+  },
+  "blog_article": {
+    "breadcrumb_home": "Home",
+    "breadcrumb_blog": "Insights",
+    "read_time": "{n} min di lettura",
+    "toc_label": "In questo articolo",
+    "share_label": "Condividi",
+    "share_linkedin": "LinkedIn",
+    "share_twitter": "X / Twitter",
+    "share_copy": "Copia link",
+    "related_label": "Potrebbe interessarti",
+    "cta_heading": "Vuoi applicarlo\nalla tua azienda?",
+    "cta_body": "Parliamoci. Senza impegno e senza presentazioni da cinquanta slide.",
+    "cta_btn": "Inizia una conversazione"
+  }
+}

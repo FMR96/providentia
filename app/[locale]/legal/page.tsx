@@ -3,7 +3,8 @@ import { getTranslations } from "next-intl/server"
 import { LegalShell } from "@/components/legal-shell"
 
 // ─── Contenido legal por idioma ──────────────────────────────────────────────
-// Sustituye los marcadores [RAZÓN SOCIAL], [NIF] y [DOMICILIO] antes de publicar.
+// Completar datos del titular (nombre legal, NIF, domicilio) cuando el negocio
+// esté constituido. Por ahora se identifica por nombre comercial y email.
 
 const CONTENT = {
   es: {
@@ -12,12 +13,9 @@ const CONTENT = {
     sections: [
       {
         heading: "Identificación del titular",
-        body: `En cumplimiento de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE), se informa que el titular del sitio web providentialabs.com es:
+        body: `En cumplimiento de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE), se informa que el titular del sitio web providentialabs.com opera bajo la marca Providentia.
 
-Razón social: [RAZÓN SOCIAL]
-NIF/CIF: [NIF]
-Domicilio: [DOMICILIO]
-Correo electrónico: hola@providentia.es`,
+Correo electrónico de contacto: hola@providentia.es`,
       },
       {
         heading: "Objeto y condiciones de uso",
@@ -43,12 +41,9 @@ Correo electrónico: hola@providentia.es`,
     sections: [
       {
         heading: "Website owner",
-        body: `In accordance with Spanish Law 34/2002 on Information Society Services (LSSI-CE), the owner of the website providentialabs.com is:
+        body: `In accordance with Spanish Law 34/2002 on Information Society Services (LSSI-CE), the website providentialabs.com is operated under the Providentia brand.
 
-Legal name: [LEGAL NAME]
-Tax ID: [NIF]
-Address: [ADDRESS]
-Email: hola@providentia.es`,
+Contact email: hola@providentia.es`,
       },
       {
         heading: "Use of the website",
@@ -74,12 +69,9 @@ Email: hola@providentia.es`,
     sections: [
       {
         heading: "Dati del titolare",
-        body: `Ai sensi della Legge spagnola 34/2002 sui Servizi della Società dell'Informazione (LSSI-CE), il titolare del sito web providentialabs.com è:
+        body: `Ai sensi della Legge spagnola 34/2002 sui Servizi della Società dell'Informazione (LSSI-CE), il sito web providentialabs.com è gestito con il marchio Providentia.
 
-Ragione sociale: [RAGIONE SOCIALE]
-Codice fiscale/P.IVA: [NIF]
-Sede legale: [INDIRIZZO]
-Email: hola@providentia.es`,
+Email di contatto: hola@providentia.es`,
       },
       {
         heading: "Utilizzo del sito",

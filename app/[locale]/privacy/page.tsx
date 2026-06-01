@@ -3,9 +3,7 @@ import { getTranslations } from "next-intl/server"
 import { LegalShell } from "@/components/legal-shell"
 
 // ─── Contenido por idioma ─────────────────────────────────────────────────────
-// Sustituye [RAZÓN SOCIAL], [NIF] y [DOMICILIO] antes de publicar.
-// Si designas un Delegado de Protección de Datos, añade su contacto en la
-// sección "Derechos del interesado".
+// Completar con nombre legal, NIF y domicilio fiscal cuando estén disponibles.
 
 const CONTENT = {
   es: {
@@ -14,7 +12,7 @@ const CONTENT = {
     sections: [
       {
         heading: "Responsable del tratamiento",
-        body: "[RAZÓN SOCIAL], NIF [NIF], con domicilio en [DOMICILIO].\nCorreo electrónico: hola@providentia.es",
+        body: "Providentia (marca comercial). Correo electrónico de contacto: hola@providentia.es",
       },
       {
         heading: "Datos que tratamos",
@@ -44,7 +42,7 @@ const CONTENT = {
     sections: [
       {
         heading: "Data controller",
-        body: "[LEGAL NAME], tax ID [NIF], address: [ADDRESS].\nEmail: hola@providentia.es",
+        body: "Providentia (trading name). Contact email: hola@providentia.es",
       },
       {
         heading: "Data we collect",
@@ -74,7 +72,7 @@ const CONTENT = {
     sections: [
       {
         heading: "Titolare del trattamento",
-        body: "[RAGIONE SOCIALE], CF/P.IVA [NIF], sede legale: [INDIRIZZO].\nEmail: hola@providentia.es",
+        body: "Providentia (nome commerciale). Email di contatto: hola@providentia.es",
       },
       {
         heading: "Dati che trattiamo",

@@ -108,6 +108,52 @@
     "read_time": "{n} min de lectura",
     "read_article": "Leer artículo →"
   },
+  "oferta": {
+    "meta_title": "Presencia digital completa — Providentia",
+    "meta_description": "Fotografía profesional, web, branding, redes y SEO local. Todo incluido por 70 €/mes, sin permanencia. Para pequeños negocios y autónomos.",
+    "og_title": "Presencia digital completa — Providentia",
+    "og_description": "Fotografía, web, branding, redes y posicionamiento. Todo incluido por 70 €/mes, sin permanencia.",
+    "wa_message": "Hola, me interesa el pack de presencia digital por 70€/mes. ¿Podemos hablar?",
+    "hero": {
+      "tagline": "Presencia digital",
+      "headline": "Tu negocio, listo\npara que lo\nencuentren.",
+      "body": "Una agencia que monta toda tu presencia profesional —fotografía, web, branding, redes y posicionamiento— por una cuota mensual única.",
+      "cta_primary": "Reservar mi sitio →",
+      "cta_secondary": "Ver qué incluye",
+      "price_label": "70 € / mes · Sin permanencia"
+    },
+    "includes": {
+      "label": "Todo incluido",
+      "heading": "Nueve servicios.\nUna sola cuota."
+    },
+    "items": [
+      { "numeral": "01", "title": "Sesión de fotografía profesional", "tag": "Photography", "description": "Imágenes propias de tu negocio. Incluida, sin coste adicional." },
+      { "numeral": "02", "title": "1.000 flyers", "tag": "Print", "description": "Diseñados e impresos, listos para repartir desde el primer mes." },
+      { "numeral": "03", "title": "500 tarjetas de visita", "tag": "Print", "description": "Diseño e impresión incluidos. Tu imagen en cada apretón de manos." },
+      { "numeral": "04", "title": "Página web profesional", "tag": "Web", "description": "Con dominio y hosting incluidos. Rápida, segura y adaptada a móvil." },
+      { "numeral": "05", "title": "Ficha de Google", "tag": "Local", "description": "Optimizada y activa, con estrategia de reseñas para ganar visibilidad." },
+      { "numeral": "06", "title": "SEO y posicionamiento local", "tag": "Search", "description": "Para que te encuentren primero cuando buscan lo que ofreces, cerca." },
+      { "numeral": "07", "title": "Logo y branding", "tag": "Identity", "description": "Identidad visual que te distingue y transmite profesionalidad." },
+      { "numeral": "08", "title": "Redes sociales", "tag": "Social", "description": "Gestión de Instagram y TikTok. Presencia activa, sin que tú lo gestiones." },
+      { "numeral": "09", "title": "Informes mensuales", "tag": "Reporting", "description": "Resultados medibles cada mes. Sabes exactamente qué funciona." }
+    ],
+    "pricing": {
+      "label": "Precio",
+      "per_month": "/ mes"
+    },
+    "guarantees": [
+      { "label": "Sin permanencia", "description": "Empieza y para cuando quieras." },
+      { "label": "Sin letra pequeña", "description": "Precio único, sin sorpresas al final del mes." },
+      { "label": "Cancelas cuando quieras", "description": "Un aviso y listo. Sin formularios ni penalizaciones." }
+    ],
+    "pricing_footnote": "Si no estás contenta, lo dejas. Así de simple.",
+    "closing": {
+      "support_label": "Soporte directo por WhatsApp",
+      "heading": "Hablemos.",
+      "body": "Cuéntanos tu negocio. Respondemos hoy.",
+      "cta": "Reservar mi sitio →"
+    }
+  },
   "blog_article": {
     "breadcrumb_home": "Inicio",
     "breadcrumb_blog": "Insights",

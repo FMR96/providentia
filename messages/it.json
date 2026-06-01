@@ -108,6 +108,52 @@
     "read_time": "{n} min di lettura",
     "read_article": "Leggi l'articolo →"
   },
+  "oferta": {
+    "meta_title": "Presenza digitale completa — Providentia",
+    "meta_description": "Fotografia professionale, sito web, branding, social media e SEO locale. Tutto incluso a 70 €/mese, senza vincoli. Per piccole imprese e liberi professionisti.",
+    "og_title": "Presenza digitale completa — Providentia",
+    "og_description": "Fotografia, sito web, branding, social media e posizionamento locale. Tutto incluso a 70 €/mese, senza vincoli.",
+    "wa_message": "Ciao, sono interessato/a al pacchetto presenza digitale a 70€/mese. Possiamo parlare?",
+    "hero": {
+      "tagline": "Presenza digitale",
+      "headline": "La tua attività, pronta\nper essere\ntrovata.",
+      "body": "Un'agenzia che costruisce tutta la tua presenza professionale — fotografia, sito web, branding, social media e posizionamento — per un canone mensile unico.",
+      "cta_primary": "Prenota il mio spazio →",
+      "cta_secondary": "Scopri cosa include",
+      "price_label": "70 € / mese · Senza vincoli"
+    },
+    "includes": {
+      "label": "Tutto incluso",
+      "heading": "Nove servizi.\nUn'unica quota."
+    },
+    "items": [
+      { "numeral": "01", "title": "Sessione fotografica professionale", "tag": "Photography", "description": "Immagini autentiche della tua attività. Incluse, senza costi aggiuntivi." },
+      { "numeral": "02", "title": "1.000 volantini", "tag": "Print", "description": "Progettati e stampati, pronti da distribuire dal primo mese." },
+      { "numeral": "03", "title": "500 biglietti da visita", "tag": "Print", "description": "Design e stampa inclusi. La tua immagine in ogni stretta di mano." },
+      { "numeral": "04", "title": "Sito web professionale", "tag": "Web", "description": "Dominio e hosting inclusi. Veloce, sicuro e ottimizzato per mobile." },
+      { "numeral": "05", "title": "Scheda Google", "tag": "Local", "description": "Ottimizzata e attiva, con strategia di recensioni per aumentare la visibilità." },
+      { "numeral": "06", "title": "SEO e posizionamento locale", "tag": "Search", "description": "Per essere trovato per primo quando cercano quello che offri, vicino a te." },
+      { "numeral": "07", "title": "Logo e branding", "tag": "Identity", "description": "Identità visiva che ti distingue e trasmette professionalità." },
+      { "numeral": "08", "title": "Social media", "tag": "Social", "description": "Gestione di Instagram e TikTok. Presenza attiva, senza che tu debba occupartene." },
+      { "numeral": "09", "title": "Report mensili", "tag": "Reporting", "description": "Risultati misurabili ogni mese. Sai esattamente cosa funziona." }
+    ],
+    "pricing": {
+      "label": "Prezzo",
+      "per_month": "/ mese"
+    },
+    "guarantees": [
+      { "label": "Senza vincoli", "description": "Inizia e smetti quando vuoi." },
+      { "label": "Senza sorprese", "description": "Un prezzo fisso, nessuna sorpresa a fine mese." },
+      { "label": "Disdici quando vuoi", "description": "Un avviso e basta. Nessun modulo, nessuna penale." }
+    ],
+    "pricing_footnote": "Se non sei soddisfatta, smetti. Così semplice.",
+    "closing": {
+      "support_label": "Supporto diretto via WhatsApp",
+      "heading": "Parliamoci.",
+      "body": "Raccontaci la tua attività. Rispondiamo oggi.",
+      "cta": "Prenota il mio spazio →"
+    }
+  },
   "blog_article": {
     "breadcrumb_home": "Home",
     "breadcrumb_blog": "Insights",

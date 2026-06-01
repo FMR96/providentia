@@ -108,6 +108,52 @@
     "read_time": "{n} min read",
     "read_article": "Read article →"
   },
+  "oferta": {
+    "meta_title": "Complete digital presence — Providentia",
+    "meta_description": "Professional photography, website, branding, social media and local SEO. All included for 70 €/month, no commitment. For small businesses and sole traders.",
+    "og_title": "Complete digital presence — Providentia",
+    "og_description": "Photography, website, branding, social media and local ranking. All included for 70 €/month, no commitment.",
+    "wa_message": "Hi, I'm interested in the digital presence pack for 70€/month. Can we talk?",
+    "hero": {
+      "tagline": "Digital presence",
+      "headline": "Your business, ready\nto be\nfound.",
+      "body": "An agency that sets up your entire professional presence — photography, website, branding, social media and local ranking — for a single monthly fee.",
+      "cta_primary": "Reserve my spot →",
+      "cta_secondary": "See what's included",
+      "price_label": "70 € / month · No commitment"
+    },
+    "includes": {
+      "label": "Everything included",
+      "heading": "Nine services.\nOne single fee."
+    },
+    "items": [
+      { "numeral": "01", "title": "Professional photography session", "tag": "Photography", "description": "Your own business images. Included at no extra cost." },
+      { "numeral": "02", "title": "1,000 flyers", "tag": "Print", "description": "Designed and printed, ready to hand out from the first month." },
+      { "numeral": "03", "title": "500 business cards", "tag": "Print", "description": "Design and printing included. Your image in every handshake." },
+      { "numeral": "04", "title": "Professional website", "tag": "Web", "description": "Domain and hosting included. Fast, secure and mobile-ready." },
+      { "numeral": "05", "title": "Google Business Profile", "tag": "Local", "description": "Optimised and active, with a review strategy to gain visibility." },
+      { "numeral": "06", "title": "SEO and local ranking", "tag": "Search", "description": "So you're found first when people search for what you offer, nearby." },
+      { "numeral": "07", "title": "Logo and branding", "tag": "Identity", "description": "Visual identity that sets you apart and conveys professionalism." },
+      { "numeral": "08", "title": "Social media", "tag": "Social", "description": "Instagram and TikTok management. Active presence, without you having to manage it." },
+      { "numeral": "09", "title": "Monthly reports", "tag": "Reporting", "description": "Measurable results every month. You know exactly what works." }
+    ],
+    "pricing": {
+      "label": "Pricing",
+      "per_month": "/ month"
+    },
+    "guarantees": [
+      { "label": "No commitment", "description": "Start and stop whenever you want." },
+      { "label": "No fine print", "description": "One price, no surprises at the end of the month." },
+      { "label": "Cancel anytime", "description": "One notice and done. No forms, no penalties." }
+    ],
+    "pricing_footnote": "If you are not happy, you leave. That simple.",
+    "closing": {
+      "support_label": "Direct support via WhatsApp",
+      "heading": "Let's talk.",
+      "body": "Tell us about your business. We reply today.",
+      "cta": "Reserve my spot →"
+    }
+  },
   "blog_article": {
     "breadcrumb_home": "Home",
     "breadcrumb_blog": "Insights",

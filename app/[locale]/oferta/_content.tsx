@@ -10,9 +10,25 @@ import { Link } from "@/i18n/navigation"
 // Cambia <NUMERO> por el número real sin espacios ni símbolo +
 // Ejemplo España: 34612345678
 const WA_NUMBER = "<NUMERO>"
-const WA_LINK = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(
-  "Hola, me interesa el pack de presencia digital por 70€/mes. ¿Podemos hablar?"
-)}`
+
+// ─── Tipos ────────────────────────────────────────────────────────────────────
+
+type PackItem  = { numeral: string; title: string; tag: string; description: string }
+type Guarantee = { label: string; description: string }
+
+// ─── Constantes de animación ──────────────────────────────────────────────────
+
+const DELAYS = [
+  "animation-delay-100",
+  "animation-delay-200",
+  "animation-delay-300",
+  "animation-delay-400",
+  "animation-delay-500",
+  "animation-delay-600",
+  "animation-delay-100",
+  "animation-delay-200",
+  "animation-delay-300",
+]
 
 // ─── Componentes internos ──────────────────────────────────────────────────────
 
@@ -72,9 +88,9 @@ function GlassNavbar() {
         : "1px solid var(--border-light)"
       : "none"
 
-  const textMain  = overDark ? "var(--text-light)" : "var(--text-dark)"
-  const textSub   = overDark ? "var(--sage)"        : "var(--text-mid)"
-  const menuBorder = overDark ? "var(--bg-dark-2)"  : "var(--border-light)"
+  const textMain   = overDark ? "var(--text-light)" : "var(--text-dark)"
+  const textSub    = overDark ? "var(--sage)"        : "var(--text-mid)"
+  const menuBorder = overDark ? "var(--bg-dark-2)"   : "var(--border-light)"
 
   const navLinks = [
     { label: t("services"),   href: "/#servicios" },
@@ -194,82 +210,17 @@ function GlassNavbar() {
   )
 }
 
-// ─── Datos del pack ────────────────────────────────────────────────────────────
-
-const PACK_ITEMS = [
-  {
-    numeral: "01",
-    title: "Sesión de fotografía profesional",
-    tag: "Photography",
-    description: "Imágenes propias de tu negocio. Incluida, sin coste adicional.",
-  },
-  {
-    numeral: "02",
-    title: "1.000 flyers",
-    tag: "Print",
-    description: "Diseñados e impresos, listos para repartir desde el primer mes.",
-  },
-  {
-    numeral: "03",
-    title: "500 tarjetas de visita",
-    tag: "Print",
-    description: "Diseño e impresión incluidos. Tu imagen en cada apretón de manos.",
-  },
-  {
-    numeral: "04",
-    title: "Página web profesional",
-    tag: "Web",
-    description: "Con dominio y hosting incluidos. Rápida, segura y adaptada a móvil.",
-  },
-  {
-    numeral: "05",
-    title: "Ficha de Google",
-    tag: "Local",
-    description: "Optimizada y activa, con estrategia de reseñas para ganar visibilidad.",
-  },
-  {
-    numeral: "06",
-    title: "SEO y posicionamiento local",
-    tag: "Search",
-    description: "Para que te encuentren primero cuando buscan lo que ofreces, cerca.",
-  },
-  {
-    numeral: "07",
-    title: "Logo y branding",
-    tag: "Identity",
-    description: "Identidad visual que te distingue y transmite profesionalidad.",
-  },
-  {
-    numeral: "08",
-    title: "Redes sociales",
-    tag: "Social",
-    description: "Gestión de Instagram y TikTok. Presencia activa, sin que tú lo gestiones.",
-  },
-  {
-    numeral: "09",
-    title: "Informes mensuales",
-    tag: "Reporting",
-    description: "Resultados medibles cada mes. Sabes exactamente qué funciona.",
-  },
-]
-
-const DELAYS = [
-  "animation-delay-100",
-  "animation-delay-200",
-  "animation-delay-300",
-  "animation-delay-400",
-  "animation-delay-500",
-  "animation-delay-600",
-  "animation-delay-100",
-  "animation-delay-200",
-  "animation-delay-300",
-]
-
 // ─── Componente principal ──────────────────────────────────────────────────────
 
 export function OfertaContent() {
   const tn = useTranslations("nav")
   const tf = useTranslations("footer")
+  const to = useTranslations("oferta")
+
+  const items     = to.raw("items")     as PackItem[]
+  const guarantees = to.raw("guarantees") as Guarantee[]
+
+  const waLink = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(to("wa_message"))}`
 
   return (
     <div className="min-h-screen">
@@ -287,46 +238,43 @@ export function OfertaContent() {
               className="data-label mb-10 animate-fade-up"
               style={{ color: "var(--text-muted)" }}
             >
-              Presencia digital
+              {to("hero.tagline")}
             </p>
             <h1
-              className="h1-display animate-fade-up animation-delay-100"
+              className="h1-display animate-fade-up animation-delay-100 whitespace-pre-line"
               style={{ fontSize: "clamp(48px,7vw,88px)", color: "var(--text-dark)" }}
             >
-              Tu negocio, listo<br />
-              para que lo<br />
-              encuentren.
+              {to("hero.headline")}
             </h1>
             <p
               className="font-serif text-[18px] leading-[1.8] mt-10 max-w-xl animate-fade-up animation-delay-200"
               style={{ color: "var(--text-mid)" }}
             >
-              Una agencia que monta toda tu presencia profesional —fotografía,
-              web, branding, redes y posicionamiento— por una cuota mensual única.
+              {to("hero.body")}
             </p>
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5 mt-12 animate-fade-up animation-delay-300">
               <a
-                href={WA_LINK}
+                href={waLink}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="cta-label px-8 py-3 transition-colors"
                 style={{ background: "var(--signal)", color: "var(--text-light)" }}
               >
-                Reservar mi sitio →
+                {to("hero.cta_primary")}
               </a>
               <a
                 href="#incluye"
                 className="cta-label px-6 py-3 transition-colors"
                 style={{ color: "var(--moss)", border: "1px solid var(--border-light)" }}
               >
-                Ver qué incluye
+                {to("hero.cta_secondary")}
               </a>
             </div>
             <p
               className="data-label mt-10 animate-fade-up animation-delay-400"
               style={{ color: "var(--text-muted)" }}
             >
-              70 € / mes · Sin permanencia
+              {to("hero.price_label")}
             </p>
           </div>
         </div>
@@ -345,19 +293,18 @@ export function OfertaContent() {
               className="data-label mb-6 animate-fade-up"
               style={{ color: "var(--text-muted)" }}
             >
-              Todo incluido
+              {to("includes.label")}
             </p>
             <h2
-              className="h2-display animate-fade-up animation-delay-100"
+              className="h2-display animate-fade-up animation-delay-100 whitespace-pre-line"
               style={{ fontSize: "clamp(32px,4.5vw,56px)", color: "var(--text-light)" }}
             >
-              Nueve servicios.<br />
-              Una sola cuota.
+              {to("includes.heading")}
             </h2>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-8">
-            {PACK_ITEMS.map((item, i) => (
+            {items.map((item, i) => (
               <div
                 key={item.numeral}
                 className={`glass-dark p-8 animate-fade-up ${DELAYS[i]}`}
@@ -399,7 +346,7 @@ export function OfertaContent() {
               className="data-label mb-10 animate-fade-up"
               style={{ color: "var(--text-muted)" }}
             >
-              Precio
+              {to("pricing.label")}
             </p>
 
             <div className="flex items-baseline gap-3 animate-fade-up animation-delay-100">
@@ -415,25 +362,12 @@ export function OfertaContent() {
                 70 €
               </span>
               <span className="data-label" style={{ color: "var(--text-muted)" }}>
-                / mes
+                {to("pricing.per_month")}
               </span>
             </div>
 
             <div className="mt-14 animate-fade-up animation-delay-200">
-              {[
-                {
-                  label: "Sin permanencia",
-                  description: "Empieza y para cuando quieras.",
-                },
-                {
-                  label: "Sin letra pequeña",
-                  description: "Precio único, sin sorpresas al final del mes.",
-                },
-                {
-                  label: "Cancelas cuando quieras",
-                  description: "Un aviso y listo. Sin formularios ni penalizaciones.",
-                },
-              ].map((item) => (
+              {guarantees.map((item) => (
                 <div
                   key={item.label}
                   className="flex flex-col sm:flex-row gap-2 sm:gap-6 py-6"
@@ -459,7 +393,7 @@ export function OfertaContent() {
               className="font-serif text-[18px] leading-[1.8] mt-12 animate-fade-up animation-delay-300"
               style={{ color: "var(--text-mid)" }}
             >
-              Si no estás contenta, lo dejas. Así de simple.
+              {to("pricing_footnote")}
             </p>
           </div>
         </div>
@@ -478,28 +412,28 @@ export function OfertaContent() {
               className="data-label mb-8 animate-fade-up"
               style={{ color: "var(--text-muted)" }}
             >
-              Soporte directo por WhatsApp
+              {to("closing.support_label")}
             </p>
             <h2
               className="h2-display animate-fade-up animation-delay-100"
               style={{ fontSize: "clamp(32px,4.5vw,56px)", color: "var(--text-light)" }}
             >
-              Hablemos.
+              {to("closing.heading")}
             </h2>
             <p
               className="font-serif text-[18px] leading-[1.8] mt-8 mb-12 animate-fade-up animation-delay-200"
               style={{ color: "var(--text-muted)" }}
             >
-              Cuéntanos tu negocio. Respondemos hoy.
+              {to("closing.body")}
             </p>
             <a
-              href={WA_LINK}
+              href={waLink}
               target="_blank"
               rel="noopener noreferrer"
               className="cta-label px-8 py-3 transition-colors inline-block animate-fade-up animation-delay-300"
               style={{ background: "var(--signal-inv)", color: "var(--signal)" }}
             >
-              Reservar mi sitio →
+              {to("closing.cta")}
             </a>
           </div>
         </div>

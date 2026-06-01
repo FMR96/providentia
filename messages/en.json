@@ -108,6 +108,26 @@
     "read_time": "{n} min read",
     "read_article": "Read article →"
   },
+  "legal": {
+    "banner_body": "We use anonymous visit analytics to improve the site. You can accept or continue with essential technologies only.",
+    "banner_learn_more": "Learn more",
+    "banner_accept": "Accept",
+    "banner_reject": "Essential only",
+    "nav_notice": "Legal notice",
+    "nav_privacy": "Privacy",
+    "nav_cookies": "Cookies",
+    "notice_meta_title": "Legal Notice — Providentia",
+    "notice_meta_desc": "Legal information about the owner and terms of use of providentialabs.com.",
+    "notice_tagline": "Legal",
+    "privacy_meta_title": "Privacy Policy — Providentia",
+    "privacy_meta_desc": "How we handle your personal data in compliance with GDPR.",
+    "privacy_tagline": "Privacy",
+    "cookies_meta_title": "Cookie Policy — Providentia",
+    "cookies_meta_desc": "What tracking technologies we use and how you can manage them.",
+    "cookies_tagline": "Cookies",
+    "cookies_reset_btn": "Reset preferences",
+    "cookies_reset_done": "Preferences reset. Reload the page to choose again."
+  },
   "oferta": {
     "meta_title": "Complete digital presence — Providentia",
     "meta_description": "Professional photography, website, branding, social media and local SEO. All included for 70 €/month, no commitment. For small businesses and sole traders.",

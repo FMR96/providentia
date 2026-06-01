@@ -108,6 +108,26 @@
     "read_time": "{n} min di lettura",
     "read_article": "Leggi l'articolo →"
   },
+  "legal": {
+    "banner_body": "Utilizziamo analisi anonima delle visite per migliorare il sito. Puoi accettare o continuare con le sole tecnologie essenziali.",
+    "banner_learn_more": "Maggiori informazioni",
+    "banner_accept": "Accetta",
+    "banner_reject": "Solo essenziali",
+    "nav_notice": "Note legale",
+    "nav_privacy": "Privacy",
+    "nav_cookies": "Cookie",
+    "notice_meta_title": "Note Legale — Providentia",
+    "notice_meta_desc": "Informazioni legali sul titolare e le condizioni d'uso di providentialabs.com.",
+    "notice_tagline": "Legale",
+    "privacy_meta_title": "Informativa sulla Privacy — Providentia",
+    "privacy_meta_desc": "Come trattiamo i tuoi dati personali in conformità al GDPR.",
+    "privacy_tagline": "Privacy",
+    "cookies_meta_title": "Cookie Policy — Providentia",
+    "cookies_meta_desc": "Quali tecnologie utilizziamo e come puoi gestirle.",
+    "cookies_tagline": "Cookie",
+    "cookies_reset_btn": "Reimposta preferenze",
+    "cookies_reset_done": "Preferenze reimpostate. Ricarica la pagina per scegliere di nuovo."
+  },
   "oferta": {
     "meta_title": "Presenza digitale completa — Providentia",
     "meta_description": "Fotografia professionale, sito web, branding, social media e SEO locale. Tutto incluso a 70 €/mese, senza vincoli. Per piccole imprese e liberi professionisti.",

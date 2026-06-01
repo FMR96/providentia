@@ -216,6 +216,7 @@ export function OfertaContent() {
   const tn = useTranslations("nav")
   const tf = useTranslations("footer")
   const to = useTranslations("oferta")
+  const tl = useTranslations("legal")
 
   const items     = to.raw("items")     as PackItem[]
   const guarantees = to.raw("guarantees") as Guarantee[]
@@ -475,6 +476,22 @@ export function OfertaContent() {
           <span className="data-label" style={{ color: "var(--text-muted)" }}>
             {tf("copyright")}
           </span>
+        </div>
+
+        {/* Legal links */}
+        <div
+          className="flex flex-wrap gap-x-6 gap-y-2 mt-8 pt-6"
+          style={{ borderTop: "1px solid var(--border-dark)" }}
+        >
+          {[
+            { label: tl("nav_notice"),  href: "/legal"   },
+            { label: tl("nav_privacy"), href: "/privacy" },
+            { label: tl("nav_cookies"), href: "/cookies" },
+          ].map(({ label, href }) => (
+            <a key={href} href={href} className="nav-label transition-colors" style={{ color: "var(--text-muted)", opacity: 0.6 }}>
+              {label}
+            </a>
+          ))}
         </div>
       </footer>
     </div>

@@ -211,6 +211,7 @@ export default function Home() {
   const tc = useTranslations("contact")
   const ti = useTranslations("insights")
   const tf = useTranslations("footer")
+  const tl = useTranslations("legal")
 
   const serviceItems = ts.raw("items") as Array<{ numeral: string; title: string; tag: string; description: string }>
   const methodSteps  = tm.raw("steps") as Array<{ numeral: string; label: string; description: string }>
@@ -475,6 +476,22 @@ export default function Home() {
           </nav>
 
           <span className="data-label" style={{ color: "var(--text-muted)" }}>{tf("copyright")}</span>
+        </div>
+
+        {/* Legal links */}
+        <div
+          className="flex flex-wrap gap-x-6 gap-y-2 mt-8 pt-6"
+          style={{ borderTop: "1px solid var(--border-dark)" }}
+        >
+          {[
+            { label: tl("nav_notice"),  href: "/legal"   },
+            { label: tl("nav_privacy"), href: "/privacy" },
+            { label: tl("nav_cookies"), href: "/cookies" },
+          ].map(({ label, href }) => (
+            <Link key={href} href={href as any} className="nav-label transition-colors" style={{ color: "var(--text-muted)", opacity: 0.6 }}>
+              {label}
+            </Link>
+          ))}
         </div>
       </footer>
     </div>

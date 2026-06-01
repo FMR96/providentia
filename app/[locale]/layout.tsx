@@ -2,9 +2,9 @@ import type { Metadata } from 'next'
 import { Cormorant_Garamond, JetBrains_Mono } from 'next/font/google'
 import { NextIntlClientProvider } from 'next-intl'
 import { getMessages } from 'next-intl/server'
-import { Analytics } from '@vercel/analytics/next'
 import { routing } from '@/i18n/routing'
 import { notFound } from 'next/navigation'
+import { ConsentManager } from '@/components/consent-manager'
 
 const cormorantGaramond = Cormorant_Garamond({
   subsets: ['latin'],
@@ -52,8 +52,8 @@ export default async function LocaleLayout({ children, params }: Props) {
       <body className="font-serif antialiased bg-background text-foreground">
         <NextIntlClientProvider messages={messages}>
           {children}
+          <ConsentManager />
         </NextIntlClientProvider>
-        {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>
   )

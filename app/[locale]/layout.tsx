@@ -6,6 +6,7 @@ import { routing } from '@/i18n/routing'
 import { notFound } from 'next/navigation'
 import { ConsentManager } from '@/components/consent-manager'
 import { JsonLd } from '@/components/json-ld'
+import { WhatsAppButton } from '@/components/whatsapp-button'
 
 const ORG_SCHEMA = {
   "@context": "https://schema.org",
@@ -112,6 +113,7 @@ export default async function LocaleLayout({ children, params }: Props) {
           <ConsentManager />
         </NextIntlClientProvider>
         <JsonLd data={ORG_SCHEMA} />
+        <WhatsAppButton />
       </body>
     </html>
   )

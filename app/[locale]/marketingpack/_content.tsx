@@ -9,7 +9,7 @@ import { Link } from "@/i18n/navigation"
 // ─── WhatsApp ─────────────────────────────────────────────────────────────────
 // Cambia <NUMERO> por el número real sin espacios ni símbolo +
 // Ejemplo España: 34612345678
-const WA_NUMBER = "<NUMERO>"
+const WA_NUMBER = "34689989311"
 
 // ─── Tipos ────────────────────────────────────────────────────────────────────
 

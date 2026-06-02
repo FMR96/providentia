@@ -7,6 +7,9 @@ import { notFound } from 'next/navigation'
 import { ConsentManager } from '@/components/consent-manager'
 import { JsonLd } from '@/components/json-ld'
 import { WhatsAppButton } from '@/components/whatsapp-button'
+import Script from 'next/script'
+
+const GA_ID = 'G-5YCHNMCCC9'
 
 const ORG_SCHEMA = {
   "@context": "https://schema.org",
@@ -114,6 +117,13 @@ export default async function LocaleLayout({ children, params }: Props) {
         </NextIntlClientProvider>
         <JsonLd data={ORG_SCHEMA} />
         <WhatsAppButton />
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="gtag-init" strategy="afterInteractive">
+          {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${GA_ID}');`}
+        </Script>
       </body>
     </html>
   )

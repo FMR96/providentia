@@ -3,6 +3,8 @@ import { getTranslations } from "next-intl/server"
 import { getLocale } from "next-intl/server"
 import { Link } from "@/i18n/navigation"
 import type { Metadata } from "next"
+import { canonicalUrl, hreflangAlternates, ogBase } from "@/lib/seo"
+import { JsonLd } from "@/components/json-ld"
 
 interface Props {
   params: Promise<{ locale: string }>
@@ -14,6 +16,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: t("meta_title"),
     description: t("meta_description"),
+    alternates: {
+      canonical: canonicalUrl(locale, '/blog'),
+      languages: hreflangAlternates('/blog'),
+    },
+    openGraph: {
+      ...ogBase(locale),
+      title: t("meta_title"),
+      description: t("meta_description"),
+      url: canonicalUrl(locale, '/blog'),
+    },
   }
 }
 
@@ -76,8 +88,30 @@ export default async function BlogPage({ params }: Props) {
   const readLabel = t("read_time", { n: "" }).replace("{n}", "").trim()
   const ctaLabel  = t("read_article")
 
+  const homeLabel = locale === "it" ? "Inizio" : locale === "en" ? "Home" : "Inicio"
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": homeLabel,
+        "item": canonicalUrl(locale)
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Insights",
+        "item": canonicalUrl(locale, "/blog")
+      }
+    ]
+  }
+
   return (
     <div className="min-h-screen bg-[var(--bg-light)] pt-20">
+      <JsonLd data={breadcrumbSchema} />
 
       {/* ── Cabecera ── */}
       <section

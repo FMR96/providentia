@@ -1,4 +1,32 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://providentia.es/sitemap.xml
+# AI search crawlers — explicit allow for GEO visibility
+# Blocking any of these would directly undermine the GEO strategy.
+# To restrict access to specific paths only, use Disallow: /path
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Gemini-Crawler
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+Sitemap: https://providentialabs.com/sitemap.xml

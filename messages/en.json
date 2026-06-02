@@ -98,6 +98,28 @@
   "footer": {
     "copyright": "© MMXXVI"
   },
+  "faq": {
+    "label": "FAQ",
+    "heading": "Questions we get\nmost often.",
+    "items": [
+      {
+        "question": "What is PROVIDENTIA and what kind of companies do you work with?",
+        "answer": "We are an analytics intelligence consultancy. We work with a select number of companies that make important decisions and want data to be part of that process. Our projects cover predictive analytics, data architecture, language intelligence and data-driven digital marketing."
+      },
+      {
+        "question": "How is PROVIDENTIA different from a regular marketing agency?",
+        "answer": "An agency executes campaigns. We build the analytics layer that makes them work better: models that anticipate which segment will respond, infrastructure that connects data from different sources, and dashboards that measure real business impact — not vanity metrics."
+      },
+      {
+        "question": "What is GEO and why does it matter in 2026?",
+        "answer": "GEO (Generative Engine Optimization) is the discipline of optimising a brand's presence in AI-based search engines like ChatGPT, Perplexity or Google AI. A growing share of traffic now arrives through generative responses rather than result lists. If your brand doesn't appear in those responses, it doesn't exist for that user."
+      },
+      {
+        "question": "How do I start working with you?",
+        "answer": "We work with a select number of clients and choose them carefully. The best first step is a direct conversation: write to us at hola@providentia.es and tell us about your company."
+      }
+    ]
+  },
   "blog_listing": {
     "meta_title": "Insights — Providentia",
     "meta_description": "Opinion pieces and trends on marketing, data and business strategy.",

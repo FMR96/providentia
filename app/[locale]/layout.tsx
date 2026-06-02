@@ -5,6 +5,48 @@ import { getMessages } from 'next-intl/server'
 import { routing } from '@/i18n/routing'
 import { notFound } from 'next/navigation'
 import { ConsentManager } from '@/components/consent-manager'
+import { JsonLd } from '@/components/json-ld'
+
+const ORG_SCHEMA = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": ["Organization", "ProfessionalService"],
+      "@id": "https://providentialabs.com/#organization",
+      "name": "Providentia",
+      "url": "https://providentialabs.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://providentialabs.com/providentia.png",
+        "width": 400,
+        "height": 400
+      },
+      "description": "Consultora de inteligencia analítica especializada en modelos predictivos, arquitectura de datos, inteligencia de lenguaje natural y marketing digital basado en datos.",
+      "email": "hola@providentia.es",
+      "areaServed": { "@type": "Country", "name": "España" },
+      "knowsAbout": [
+        "Analítica de Datos",
+        "Analítica Predictiva",
+        "Arquitectura de Datos",
+        "Inteligencia de Lenguaje Natural",
+        "Visualización de Datos",
+        "Marketing Digital",
+        "SEO",
+        "Generative Engine Optimization",
+        "Marketing basado en datos",
+        "Inteligencia Artificial aplicada a Marketing"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://providentialabs.com/#website",
+      "url": "https://providentialabs.com",
+      "name": "Providentia",
+      "publisher": { "@id": "https://providentialabs.com/#organization" },
+      "inLanguage": ["es", "en", "it"]
+    }
+  ]
+}
 
 const cormorantGaramond = Cormorant_Garamond({
   subsets: ['latin'],
@@ -21,11 +63,26 @@ const jetbrainsMono = JetBrains_Mono({
   display: 'swap',
 })
 
-export const metadata: Metadata = {
-  icons: {
-    icon: '/providentia.png',
-    apple: '/providentia.png',
-  },
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params
+  return {
+    metadataBase: new URL('https://providentialabs.com'),
+    verification: {
+      google: 'YXfBMe_MOCncFV5MUI-H1DaL6KFW3eIzhRsKkgwjbNk',
+    },
+    icons: {
+      icon: '/providentia.png',
+      apple: '/providentia.png',
+    },
+    openGraph: {
+      siteName: 'Providentia',
+      locale: locale === 'it' ? 'it_IT' : locale === 'en' ? 'en_US' : 'es_ES',
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+    },
+  }
 }
 
 export function generateStaticParams() {
@@ -54,6 +111,7 @@ export default async function LocaleLayout({ children, params }: Props) {
           {children}
           <ConsentManager />
         </NextIntlClientProvider>
+        <JsonLd data={ORG_SCHEMA} />
       </body>
     </html>
   )

@@ -3,6 +3,8 @@ import { getTranslations } from "next-intl/server"
 import { Link } from "@/i18n/navigation"
 import { notFound } from "next/navigation"
 import type { Metadata } from "next"
+import { canonicalUrl, ogBase } from "@/lib/seo"
+import { JsonLd } from "@/components/json-ld"
 
 interface Props {
   params: Promise<{ locale: string; slug: string }>
@@ -21,11 +23,18 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${post.title} — Providentia`,
     description: post.excerpt,
+    alternates: {
+      canonical: canonicalUrl(locale, `/blog/${slug}`),
+    },
     openGraph: {
+      siteName: 'Providentia',
+      locale: ogBase(locale).locale,
       title: post.title,
       description: post.excerpt,
       type: "article",
       publishedTime: post.dateISO,
+      url: canonicalUrl(locale, `/blog/${slug}`),
+      images: [{ url: '/providentia.png', width: 400, height: 400, alt: 'Providentia' }],
     },
   }
 }
@@ -38,8 +47,55 @@ export default async function ArticlePage({ params }: Props) {
   const related = getRelatedPosts(slug, post.category, 2, locale)
   const t = await getTranslations({ locale, namespace: "blog_article" })
 
+  const articleUrl = canonicalUrl(locale, `/blog/${slug}`)
+
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "@id": articleUrl,
+    "headline": post.title,
+    "description": post.excerpt,
+    "datePublished": post.dateISO,
+    "url": articleUrl,
+    "inLanguage": locale,
+    "author": {
+      "@type": "Organization",
+      "name": "Providentia",
+      "@id": "https://providentialabs.com/#organization"
+    },
+    "publisher": { "@id": "https://providentialabs.com/#organization" },
+    "isPartOf": { "@id": "https://providentialabs.com/#website" }
+  }
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": t("breadcrumb_home"),
+        "item": canonicalUrl(locale)
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": t("breadcrumb_blog"),
+        "item": canonicalUrl(locale, "/blog")
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": post.title,
+        "item": articleUrl
+      }
+    ]
+  }
+
   return (
     <div className="min-h-screen">
+      <JsonLd data={articleSchema} />
+      <JsonLd data={breadcrumbSchema} />
 
       <div id="reading-progress-bar" />
 
@@ -97,7 +153,7 @@ export default async function ArticlePage({ params }: Props) {
                 <span className="blog-share-label">{t("share_label")}</span>
                 <div className="blog-share-btns">
                   <a
-                    href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(`https://providentia.es/blog/${slug}`)}`}
+                    href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(canonicalUrl(locale, `/blog/${slug}`))}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="blog-share-btn"
@@ -105,7 +161,7 @@ export default async function ArticlePage({ params }: Props) {
                     {t("share_linkedin")}
                   </a>
                   <a
-                    href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(`https://providentia.es/blog/${slug}`)}&text=${encodeURIComponent(post.title)}`}
+                    href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(canonicalUrl(locale, `/blog/${slug}`))}&text=${encodeURIComponent(post.title)}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="blog-share-btn"

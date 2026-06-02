@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { getTranslations } from "next-intl/server"
 import { LegalShell } from "@/components/legal-shell"
+import { canonicalUrl, hreflangAlternates } from "@/lib/seo"
 
 // ─── Contenido por idioma ─────────────────────────────────────────────────────
 // Completar con nombre legal, NIF y domicilio fiscal cuando estén disponibles.
@@ -110,6 +111,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: t("privacy_meta_title"),
     description: t("privacy_meta_desc"),
+    alternates: {
+      canonical: canonicalUrl(locale, '/privacy'),
+      languages: hreflangAlternates('/privacy'),
+    },
+    openGraph: {
+      title: t("privacy_meta_title"),
+      url: canonicalUrl(locale, '/privacy'),
+    },
   }
 }
 

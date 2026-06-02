@@ -98,6 +98,28 @@
   "footer": {
     "copyright": "© MMXXVI"
   },
+  "faq": {
+    "label": "FAQ",
+    "heading": "Le domande che ci\nfanno più spesso.",
+    "items": [
+      {
+        "question": "Cos'è PROVIDENTIA e con che tipo di aziende lavorate?",
+        "answer": "Siamo una consulenza di intelligenza analitica. Lavoriamo con un numero ridotto di aziende che prendono decisioni importanti e vogliono che i dati facciano parte di quel processo. I nostri progetti coprono analisi predittiva, architettura dati, intelligenza del linguaggio e marketing digitale basato sui dati."
+      },
+      {
+        "question": "In cosa si differenzia PROVIDENTIA da un'agenzia di marketing tradizionale?",
+        "answer": "Un'agenzia esegue campagne. Noi costruiamo il livello analitico che le fa funzionare meglio: modelli che anticipano quale segmento risponderà, infrastruttura che connette dati da fonti diverse, e dashboard che misurano l'impatto reale sul business — non le metriche di vanità."
+      },
+      {
+        "question": "Cos'è il GEO e perché è rilevante nel 2026?",
+        "answer": "Il GEO (Generative Engine Optimization) è la disciplina di ottimizzare la presenza di un brand nei motori di ricerca basati sull'IA come ChatGPT, Perplexity o Google AI. Una quota crescente del traffico arriva già attraverso risposte generative anziché elenchi di risultati. Se il tuo brand non appare in quelle risposte, non esiste per quell'utente."
+      },
+      {
+        "question": "Come posso iniziare a lavorare con voi?",
+        "answer": "Lavoriamo con un numero ridotto di clienti e li scegliamo con cura. Il miglior primo passo è una conversazione diretta: scrivici a hola@providentia.es e raccontaci il contesto della tua azienda."
+      }
+    ]
+  },
   "blog_listing": {
     "meta_title": "Insights — Providentia",
     "meta_description": "Articoli di opinione e tendenze su marketing, dati e strategia aziendale.",

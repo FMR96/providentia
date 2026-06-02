@@ -1,157 +1,49 @@
-"use client"
-
 import Image from "next/image"
-import { useTranslations } from "next-intl"
-import { useEffect, useRef, useState } from "react"
-import { LocaleSwitcher } from "@/components/locale-switcher"
+import { getTranslations } from "next-intl/server"
 import { Link } from "@/i18n/navigation"
+import { GlassNavbar } from "@/components/glass-navbar"
+import { JsonLd } from "@/components/json-ld"
+import type { Metadata } from "next"
+import { canonicalUrl, hreflangAlternates, ogBase } from "@/lib/seo"
 
-function Logo({ className = "", onDark = false }: { className?: string; onDark?: boolean }) {
-  return (
-    <Image
-      src="/providentia.png"
-      alt="Providentia"
-      width={40}
-      height={40}
-      className={className}
-      style={{ filter: onDark ? undefined : "brightness(0)" }}
-    />
-  )
+interface Props {
+  params: Promise<{ locale: string }>
 }
 
-function GlassNavbar() {
-  const t = useTranslations("nav")
-  const [scrolled, setScrolled] = useState(false)
-  const [overDark, setOverDark] = useState(false)
-  const [menuOpen, setMenuOpen] = useState(false)
+const META = {
+  es: {
+    title: "Providentia — Inteligencia Analítica para Empresas",
+    description: "Consultora de inteligencia analítica. Modelos predictivos, arquitectura de datos y marketing basado en datos. Trabajamos con un número reducido de clientes.",
+  },
+  en: {
+    title: "Providentia — Analytics Intelligence for Business",
+    description: "Analytics intelligence consultancy. Predictive models, data architecture and data-driven marketing. We work with a select number of clients.",
+  },
+  it: {
+    title: "Providentia — Intelligenza Analitica per Imprese",
+    description: "Consulenza di intelligenza analitica. Modelli predittivi, architettura dati e marketing basato sui dati. Lavoriamo con un numero ridotto di clienti.",
+  },
+} as const
 
-  useEffect(() => {
-    const update = () => {
-      setScrolled(window.scrollY > 80)
-      const els = document.querySelectorAll('[data-theme="dark"]')
-      let dark = false
-      els.forEach((el) => {
-        const r = el.getBoundingClientRect()
-        if (r.top <= 64 && r.bottom > 64) dark = true
-      })
-      setOverDark(dark)
-    }
-    window.addEventListener("scroll", update, { passive: true })
-    return () => window.removeEventListener("scroll", update)
-  }, [])
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale } = await params
+  const m = META[locale as keyof typeof META] ?? META.es
 
-  useEffect(() => {
-    if (menuOpen) document.body.style.overflow = "hidden"
-    else document.body.style.overflow = ""
-    return () => { document.body.style.overflow = "" }
-  }, [menuOpen])
-
-  const bg = scrolled || menuOpen
-    ? overDark
-      ? "rgba(30, 46, 36, 0.96)"
-      : "rgba(235, 240, 233, 0.96)"
-    : "transparent"
-
-  const borderBottom = scrolled && !menuOpen
-    ? overDark
-      ? "1px solid var(--border-dark)"
-      : "1px solid var(--border-light)"
-    : "none"
-
-  const textMain = overDark ? "var(--text-light)"  : "var(--text-dark)"
-  const textSub  = overDark ? "var(--sage)"         : "var(--text-mid)"
-  const menuBorder = overDark ? "var(--bg-dark-2)"  : "var(--border-light)"
-
-  const navLinks = [
-    { labelKey: "services"   as const, href: "#servicios" },
-    { labelKey: "method"     as const, href: "#metodo"    },
-    { labelKey: "insights"   as const, href: "/blog"      },
-    { labelKey: "philosophy" as const, href: "#filosofia" },
-  ]
-
-  return (
-    <nav
-      className="fixed top-0 left-0 right-0 z-30 transition-all duration-500"
-      style={{
-        background: bg,
-        borderBottom,
-        backdropFilter: "blur(32px)",
-        WebkitBackdropFilter: "blur(32px)",
-      }}
-    >
-      <div className="px-8 md:px-16 lg:px-24 py-5 flex items-center justify-between max-w-[1200px] mx-auto">
-        <Link href="/" className="flex items-center gap-3" onClick={() => setMenuOpen(false)}>
-          <Logo className="w-5 h-5" onDark={overDark} />
-          <span className="font-display italic text-lg leading-none transition-colors duration-300" style={{ color: textMain }}>
-            Providentia
-          </span>
-        </Link>
-
-        {/* Desktop links */}
-        <div className="hidden md:flex items-center gap-10">
-          {navLinks.map(({ labelKey, href }) => (
-            href.startsWith("#") ? (
-              <a key={labelKey} href={href} className="nav-label transition-colors duration-300" style={{ color: textSub }}>
-                {t(labelKey)}
-              </a>
-            ) : (
-              <Link key={labelKey} href={href as "/blog"} className="nav-label transition-colors duration-300" style={{ color: textSub }}>
-                {t(labelKey)}
-              </Link>
-            )
-          ))}
-        </div>
-
-        <div className="hidden md:flex items-center gap-6">
-          <LocaleSwitcher onDark={overDark} />
-          <a
-            href="#contacto"
-            className="cta-label px-5 py-2 transition-colors duration-300"
-            style={overDark
-              ? { color: "var(--signal-inv)", border: "1px solid var(--border-dark)" }
-              : { color: "var(--text-light)", backgroundColor: "var(--signal)" }
-            }
-          >
-            {t("contact")}
-          </a>
-        </div>
-
-        {/* Hamburger */}
-        <button
-          className="md:hidden flex flex-col justify-center items-center w-8 h-8 gap-[5px]"
-          onClick={() => setMenuOpen((o) => !o)}
-          aria-label="Menú"
-        >
-          <span className="block w-5 h-px transition-all duration-300" style={{ background: textMain, transform: menuOpen ? "rotate(45deg) translate(4px, 4px)" : "none" }} />
-          <span className="block w-5 h-px transition-all duration-300" style={{ background: textMain, opacity: menuOpen ? 0 : 1 }} />
-          <span className="block w-5 h-px transition-all duration-300" style={{ background: textMain, transform: menuOpen ? "rotate(-45deg) translate(4px, -4px)" : "none" }} />
-        </button>
-      </div>
-
-      {/* Mobile menu */}
-      {menuOpen && (
-        <div className="md:hidden px-8 pb-10 pt-2 flex flex-col gap-7 border-t" style={{ borderColor: menuBorder }}>
-          {navLinks.map(({ labelKey, href }) => (
-            href.startsWith("#") ? (
-              <a key={labelKey} href={href} className="nav-label text-[18px]" style={{ color: textSub }} onClick={() => setMenuOpen(false)}>
-                {t(labelKey)}
-              </a>
-            ) : (
-              <Link key={labelKey} href={href as "/blog"} className="nav-label text-[18px]" style={{ color: textSub }} onClick={() => setMenuOpen(false)}>
-                {t(labelKey)}
-              </Link>
-            )
-          ))}
-          <a href="#contacto" className="nav-label text-[18px]" style={{ color: textSub }} onClick={() => setMenuOpen(false)}>
-            {t("contact")}
-          </a>
-          <div className="pt-2 border-t" style={{ borderColor: menuBorder }}>
-            <LocaleSwitcher onDark={overDark} />
-          </div>
-        </div>
-      )}
-    </nav>
-  )
+  return {
+    title: m.title,
+    description: m.description,
+    alternates: {
+      canonical: canonicalUrl(locale),
+      languages: hreflangAlternates(),
+    },
+    openGraph: {
+      ...ogBase(locale),
+      title: m.title,
+      description: m.description,
+      url: canonicalUrl(locale),
+      images: [{ url: '/providentia.png', width: 400, height: 400, alt: 'Providentia' }],
+    },
+  }
 }
 
 function ServiceCard({
@@ -202,16 +94,21 @@ function MethodStep({
   )
 }
 
-export default function Home() {
-  const t  = useTranslations()
-  const th = useTranslations("hero")
-  const ts = useTranslations("services")
-  const tm = useTranslations("method")
-  const tp = useTranslations("philosophy")
-  const tc = useTranslations("contact")
-  const ti = useTranslations("insights")
-  const tf = useTranslations("footer")
-  const tl = useTranslations("legal")
+export default async function Home({ params }: Props) {
+  const { locale } = await params
+
+  const [t, th, ts, tm, tp, tc, ti, tf, tl, tfaq] = await Promise.all([
+    getTranslations({ locale }),
+    getTranslations({ locale, namespace: "hero" }),
+    getTranslations({ locale, namespace: "services" }),
+    getTranslations({ locale, namespace: "method" }),
+    getTranslations({ locale, namespace: "philosophy" }),
+    getTranslations({ locale, namespace: "contact" }),
+    getTranslations({ locale, namespace: "insights" }),
+    getTranslations({ locale, namespace: "footer" }),
+    getTranslations({ locale, namespace: "legal" }),
+    getTranslations({ locale, namespace: "faq" }),
+  ])
 
   const serviceItems = ts.raw("items") as Array<{ numeral: string; title: string; tag: string; description: string }>
   const methodSteps  = tm.raw("steps") as Array<{ numeral: string; label: string; description: string }>
@@ -219,8 +116,38 @@ export default function Home() {
 
   const methodDelays = ["animation-delay-200", "animation-delay-300", "animation-delay-400", "animation-delay-500"]
 
+  const faqItems = tfaq.raw("items") as Array<{ question: string; answer: string }>
+
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqItems.map(({ question, answer }) => ({
+      "@type": "Question",
+      "name": question,
+      "acceptedAnswer": { "@type": "Answer", "text": answer },
+    })),
+  }
+
+  const servicesSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Servicios de Providentia",
+    "itemListElement": serviceItems.map((item, i) => ({
+      "@type": "ListItem",
+      "position": i + 1,
+      "item": {
+        "@type": "Service",
+        "name": item.title,
+        "description": item.description,
+        "provider": { "@id": "https://providentialabs.com/#organization" }
+      }
+    }))
+  }
+
   return (
     <div className="min-h-screen">
+      <JsonLd data={servicesSchema} />
+      <JsonLd data={faqSchema} />
       <GlassNavbar />
 
       {/* ── I · HERO (claro) ── */}
@@ -443,6 +370,42 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── VI · FAQ (oscuro) ── */}
+      <section
+        data-theme="dark"
+        className="px-8 md:px-16 lg:px-24 py-[96px]"
+        style={{ background: "var(--bg-dark)" }}
+      >
+        <div className="max-w-[1200px] mx-auto">
+          <p className="data-label mb-6 animate-fade-up" style={{ color: "var(--text-muted)" }}>{tfaq("label")}</p>
+          <h2
+            className="h2-display mb-16 animate-fade-up animation-delay-100 whitespace-pre-line"
+            style={{ fontSize: "clamp(32px,4.5vw,56px)", color: "var(--text-light)" }}
+          >
+            {tfaq("heading")}
+          </h2>
+          <div className="space-y-0 max-w-3xl">
+            {faqItems.map((item, i) => (
+              <div
+                key={i}
+                className="py-8 animate-fade-up"
+                style={{ borderTop: "1px solid var(--border-dark)", animationDelay: `${i * 80}ms` }}
+              >
+                <h3
+                  className="h3-display mb-4"
+                  style={{ fontSize: "clamp(17px,1.8vw,20px)", color: "var(--text-light)" }}
+                >
+                  {item.question}
+                </h3>
+                <p className="font-serif text-[17px] leading-[1.8]" style={{ color: "var(--text-muted)" }}>
+                  {item.answer}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── FOOTER (evergreen oscuro) ── */}
       <footer
         data-theme="dark"
@@ -451,7 +414,12 @@ export default function Home() {
       >
         <div className="max-w-[1200px] mx-auto flex flex-col md:flex-row justify-between items-start gap-8">
           <Link href="/" className="flex items-center gap-3">
-            <Logo className="w-5 h-5" onDark={true} />
+            <Image
+              src="/providentia.png"
+              alt="Providentia"
+              width={20}
+              height={20}
+            />
             <span className="font-display italic text-lg" style={{ color: "var(--text-light)" }}>Providentia</span>
           </Link>
 
@@ -478,7 +446,6 @@ export default function Home() {
           <span className="data-label" style={{ color: "var(--text-muted)" }}>{tf("copyright")}</span>
         </div>
 
-        {/* Legal links */}
         <div
           className="flex flex-wrap gap-x-6 gap-y-2 mt-8 pt-6"
           style={{ borderTop: "1px solid var(--border-dark)" }}

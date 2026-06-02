@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { getTranslations } from "next-intl/server"
 import { LegalShell } from "@/components/legal-shell"
 import { CookieResetButton } from "./_reset"
+import { canonicalUrl, hreflangAlternates } from "@/lib/seo"
 
 // ─── Tabla de tecnologías ─────────────────────────────────────────────────────
 
@@ -92,6 +93,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: t("cookies_meta_title"),
     description: t("cookies_meta_desc"),
+    alternates: {
+      canonical: canonicalUrl(locale, '/cookies'),
+      languages: hreflangAlternates('/cookies'),
+    },
+    openGraph: {
+      title: t("cookies_meta_title"),
+      url: canonicalUrl(locale, '/cookies'),
+    },
   }
 }
 

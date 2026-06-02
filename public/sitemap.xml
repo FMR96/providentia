@@ -4,46 +4,118 @@
 
   <!-- Home -->
   <url>
-    <loc>https://providentia.es/</loc>
-    <xhtml:link rel="alternate" hreflang="es" href="https://providentia.es/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://providentia.es/en"/>
-    <xhtml:link rel="alternate" hreflang="it" href="https://providentia.es/it"/>
+    <loc>https://providentialabs.com/</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://providentialabs.com/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://providentialabs.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://providentialabs.com/en"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://providentialabs.com/it"/>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
 
+  <!-- Sobre nosotros -->
+  <url>
+    <loc>https://providentialabs.com/sobre-nosotros</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://providentialabs.com/sobre-nosotros"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://providentialabs.com/sobre-nosotros"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://providentialabs.com/en/sobre-nosotros"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://providentialabs.com/it/sobre-nosotros"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- GEO service page -->
+  <url>
+    <loc>https://providentialabs.com/geo</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://providentialabs.com/geo"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://providentialabs.com/geo"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://providentialabs.com/en/geo"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://providentialabs.com/it/geo"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Servicios -->
+  <url>
+    <loc>https://providentialabs.com/servicios/analitica-predictiva</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://providentialabs.com/servicios/analitica-predictiva"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://providentialabs.com/servicios/analitica-predictiva"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://providentialabs.com/en/servicios/analitica-predictiva"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://providentialabs.com/it/servicios/analitica-predictiva"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- Blog listing -->
   <url>
-    <loc>https://providentia.es/blog</loc>
-    <xhtml:link rel="alternate" hreflang="es" href="https://providentia.es/blog"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://providentia.es/en/blog"/>
-    <xhtml:link rel="alternate" hreflang="it" href="https://providentia.es/it/blog"/>
+    <loc>https://providentialabs.com/blog</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://providentialabs.com/blog"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://providentialabs.com/blog"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://providentialabs.com/en/blog"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://providentialabs.com/it/blog"/>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
-  <!-- ES blog posts -->
+  <!-- Marketing Pack -->
   <url>
-    <loc>https://providentia.es/blog/el-fin-del-marketing-de-suposiciones</loc>
-    <xhtml:link rel="alternate" hreflang="es" href="https://providentia.es/blog/el-fin-del-marketing-de-suposiciones"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://providentia.es/en/blog/the-end-of-assumption-based-marketing"/>
-    <xhtml:link rel="alternate" hreflang="it" href="https://providentia.es/it/blog/la-fine-del-marketing-per-supposizioni"/>
+    <loc>https://providentialabs.com/marketingpack</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://providentialabs.com/marketingpack"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://providentialabs.com/marketingpack"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://providentialabs.com/en/marketingpack"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://providentialabs.com/it/marketingpack"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- ES blog posts — GEO cluster -->
+  <url>
+    <loc>https://providentialabs.com/blog/que-es-geo-seo</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://providentialabs.com/blog/que-es-geo-seo"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://providentialabs.com/blog/que-es-geo-seo"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://providentialabs.com/blog/como-aparecer-en-chatgpt</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://providentialabs.com/blog/como-aparecer-en-chatgpt"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://providentialabs.com/blog/como-aparecer-en-chatgpt"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://providentialabs.com/blog/analisis-datos-marketing</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://providentialabs.com/blog/analisis-datos-marketing"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://providentialabs.com/blog/analisis-datos-marketing"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- ES blog posts — existentes -->
+  <url>
+    <loc>https://providentialabs.com/blog/el-fin-del-marketing-de-suposiciones</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://providentialabs.com/blog/el-fin-del-marketing-de-suposiciones"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://providentialabs.com/blog/el-fin-del-marketing-de-suposiciones"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://providentialabs.com/en/blog/the-end-of-assumption-based-marketing"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://providentialabs.com/it/blog/la-fine-del-marketing-per-supposizioni"/>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://providentia.es/blog/tres-metricas-que-tu-cmo-deberia-mirar</loc>
-    <xhtml:link rel="alternate" hreflang="es" href="https://providentia.es/blog/tres-metricas-que-tu-cmo-deberia-mirar"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://providentia.es/en/blog/three-metrics-before-roi"/>
-    <xhtml:link rel="alternate" hreflang="it" href="https://providentia.es/it/blog/tre-metriche-prima-del-roi"/>
+    <loc>https://providentialabs.com/blog/tres-metricas-que-tu-cmo-deberia-mirar</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://providentialabs.com/blog/tres-metricas-que-tu-cmo-deberia-mirar"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://providentialabs.com/blog/tres-metricas-que-tu-cmo-deberia-mirar"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://providentialabs.com/en/blog/three-metrics-before-roi"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://providentialabs.com/it/blog/tre-metriche-prima-del-roi"/>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://providentia.es/blog/datos-2024-comportamiento-consumidor-2025</loc>
-    <xhtml:link rel="alternate" hreflang="es" href="https://providentia.es/blog/datos-2024-comportamiento-consumidor-2025"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://providentia.es/en/blog/consumer-behavior-trends-2025"/>
-    <xhtml:link rel="alternate" hreflang="it" href="https://providentia.es/it/blog/dati-2024-comportamento-consumatori-2025"/>
+    <loc>https://providentialabs.com/blog/datos-2024-comportamiento-consumidor-2025</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://providentialabs.com/blog/datos-2024-comportamiento-consumidor-2025"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://providentialabs.com/blog/datos-2024-comportamiento-consumidor-2025"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://providentialabs.com/en/blog/consumer-behavior-trends-2025"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://providentialabs.com/it/blog/dati-2024-comportamento-consumatori-2025"/>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>

@@ -35,7 +35,18 @@
     <priority>0.9</priority>
   </url>
 
-  <!-- Servicios -->
+  <!-- Índice de servicios -->
+  <url>
+    <loc>https://providentialabs.com/servicios</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://providentialabs.com/servicios"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://providentialabs.com/servicios"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://providentialabs.com/en/servicios"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://providentialabs.com/it/servicios"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Pilar I: Inteligencia de Datos -->
   <url>
     <loc>https://providentialabs.com/servicios/analitica-predictiva</loc>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://providentialabs.com/servicios/analitica-predictiva"/>
@@ -43,17 +54,98 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://providentialabs.com/en/servicios/analitica-predictiva"/>
     <xhtml:link rel="alternate" hreflang="it" href="https://providentialabs.com/it/servicios/analitica-predictiva"/>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://providentialabs.com/servicios/arquitectura-de-datos</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://providentialabs.com/servicios/arquitectura-de-datos"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://providentialabs.com/servicios/arquitectura-de-datos"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://providentialabs.com/en/servicios/arquitectura-de-datos"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://providentialabs.com/it/servicios/arquitectura-de-datos"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://providentialabs.com/servicios/inteligencia-de-lenguaje</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://providentialabs.com/servicios/inteligencia-de-lenguaje"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://providentialabs.com/servicios/inteligencia-de-lenguaje"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://providentialabs.com/en/servicios/inteligencia-de-lenguaje"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://providentialabs.com/it/servicios/inteligencia-de-lenguaje"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://providentialabs.com/servicios/visualizacion-analitica</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://providentialabs.com/servicios/visualizacion-analitica"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://providentialabs.com/servicios/visualizacion-analitica"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://providentialabs.com/en/servicios/visualizacion-analitica"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://providentialabs.com/it/servicios/visualizacion-analitica"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
   </url>
 
-  <!-- Blog listing -->
+  <!-- Pilar II: Marketing y Creatividad -->
   <url>
-    <loc>https://providentialabs.com/blog</loc>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://providentialabs.com/blog"/>
-    <xhtml:link rel="alternate" hreflang="es" href="https://providentialabs.com/blog"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://providentialabs.com/en/blog"/>
-    <xhtml:link rel="alternate" hreflang="it" href="https://providentialabs.com/it/blog"/>
-    <changefreq>weekly</changefreq>
+    <loc>https://providentialabs.com/servicios/fotografia-profesional</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://providentialabs.com/servicios/fotografia-profesional"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://providentialabs.com/servicios/fotografia-profesional"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://providentialabs.com/en/servicios/fotografia-profesional"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://providentialabs.com/it/servicios/fotografia-profesional"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://providentialabs.com/servicios/carteleria</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://providentialabs.com/servicios/carteleria"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://providentialabs.com/servicios/carteleria"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://providentialabs.com/en/servicios/carteleria"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://providentialabs.com/it/servicios/carteleria"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://providentialabs.com/servicios/diseno-y-desarrollo-web</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://providentialabs.com/servicios/diseno-y-desarrollo-web"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://providentialabs.com/servicios/diseno-y-desarrollo-web"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://providentialabs.com/en/servicios/diseno-y-desarrollo-web"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://providentialabs.com/it/servicios/diseno-y-desarrollo-web"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://providentialabs.com/servicios/google-business-resenas</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://providentialabs.com/servicios/google-business-resenas"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://providentialabs.com/servicios/google-business-resenas"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://providentialabs.com/en/servicios/google-business-resenas"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://providentialabs.com/it/servicios/google-business-resenas"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://providentialabs.com/servicios/seo-sem-paid-media</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://providentialabs.com/servicios/seo-sem-paid-media"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://providentialabs.com/servicios/seo-sem-paid-media"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://providentialabs.com/en/servicios/seo-sem-paid-media"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://providentialabs.com/it/servicios/seo-sem-paid-media"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://providentialabs.com/servicios/branding-y-logo</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://providentialabs.com/servicios/branding-y-logo"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://providentialabs.com/servicios/branding-y-logo"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://providentialabs.com/en/servicios/branding-y-logo"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://providentialabs.com/it/servicios/branding-y-logo"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://providentialabs.com/servicios/gestion-redes-sociales</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://providentialabs.com/servicios/gestion-redes-sociales"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://providentialabs.com/servicios/gestion-redes-sociales"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://providentialabs.com/en/servicios/gestion-redes-sociales"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://providentialabs.com/it/servicios/gestion-redes-sociales"/>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
@@ -66,6 +158,17 @@
     <xhtml:link rel="alternate" hreflang="it" href="https://providentialabs.com/it/marketingpack"/>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+  </url>
+
+  <!-- Blog listing -->
+  <url>
+    <loc>https://providentialabs.com/blog</loc>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://providentialabs.com/blog"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://providentialabs.com/blog"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://providentialabs.com/en/blog"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://providentialabs.com/it/blog"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
 
   <!-- ES blog posts — GEO cluster -->

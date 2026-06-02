@@ -54,7 +54,7 @@ export function SiteNav() {
   const menuBorder = overDark ? "var(--bg-dark-2)"   : "var(--border-light)"
 
   const navLinks = [
-    { labelKey: "services"   as const, href: "/#servicios" },
+    { labelKey: "services"   as const, href: "/servicios"  },
     { labelKey: "method"     as const, href: "/#metodo"    },
     { labelKey: "insights"   as const, href: "/blog"        },
     { labelKey: "philosophy" as const, href: "/#filosofia"  },

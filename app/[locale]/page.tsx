@@ -46,6 +46,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
+const DATA_SERVICE_HREFS: Record<string, string> = {
+  "01": "/servicios/analitica-predictiva",
+  "02": "/servicios/arquitectura-de-datos",
+  "03": "/servicios/inteligencia-de-lenguaje",
+  "04": "/servicios/visualizacion-analitica",
+}
+
 function ServiceCard({
   numeral,
   title,
@@ -59,14 +66,23 @@ function ServiceCard({
   description: string
   delay: string
 }) {
-  return (
-    <div className={`glass-dark p-8 animate-fade-up ${delay}`}>
+  const href = DATA_SERVICE_HREFS[numeral]
+  const inner = (
+    <div className={`glass-dark p-8 animate-fade-up ${delay} h-full`}>
       <div className="metric-display text-sm mb-6" style={{ color: "var(--sage)" }}>{numeral}</div>
       <h3 className="h3-display mb-3" style={{ fontSize: "clamp(20px,2.5vw,28px)", color: "var(--text-light)" }}>{title}</h3>
       <span className="signal-badge mb-5 inline-block">{tag}</span>
       <p className="font-serif text-[18px] leading-[1.8] mt-4" style={{ color: "var(--text-muted)" }}>{description}</p>
     </div>
   )
+  if (href) {
+    return (
+      <Link href={href as any} className="block group">
+        {inner}
+      </Link>
+    )
+  }
+  return inner
 }
 
 function MethodStep({
@@ -213,6 +229,16 @@ export default async function Home({ params }: Props) {
                 delay={`animation-delay-${(i + 2) * 100}`}
               />
             ))}
+          </div>
+
+          <div className="mt-12 animate-fade-up animation-delay-600">
+            <Link
+              href="/servicios"
+              className="nav-label transition-colors"
+              style={{ color: "var(--sage)" }}
+            >
+              {locale === "it" ? "Tutti i servizi →" : locale === "en" ? "View all services →" : "Ver todos los servicios →"}
+            </Link>
           </div>
         </div>
       </section>
@@ -425,7 +451,7 @@ export default async function Home({ params }: Props) {
 
           <nav className="flex flex-wrap gap-x-8 gap-y-3">
             {[
-              { labelKey: "services"   as const, href: "#servicios" },
+              { labelKey: "services"   as const, href: "/servicios" },
               { labelKey: "method"     as const, href: "#metodo"    },
               { labelKey: "insights"   as const, href: "/blog"      },
               { labelKey: "philosophy" as const, href: "#filosofia" },
@@ -436,7 +462,7 @@ export default async function Home({ params }: Props) {
                   {t(`nav.${labelKey}`)}
                 </a>
               ) : (
-                <Link key={labelKey} href={href as "/blog"} className="nav-label transition-colors" style={{ color: "var(--text-muted)" }}>
+                <Link key={labelKey} href={href as any} className="nav-label transition-colors" style={{ color: "var(--text-muted)" }}>
                   {t(`nav.${labelKey}`)}
                 </Link>
               )

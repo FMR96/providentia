@@ -73,6 +73,8 @@
     <loc>https://providentialabs.com/blog/que-es-geo-seo</loc>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://providentialabs.com/blog/que-es-geo-seo"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://providentialabs.com/blog/que-es-geo-seo"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://providentialabs.com/en/blog/what-is-geo-seo"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://providentialabs.com/it/blog/cosa-e-il-geo-seo"/>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -80,6 +82,8 @@
     <loc>https://providentialabs.com/blog/como-aparecer-en-chatgpt</loc>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://providentialabs.com/blog/como-aparecer-en-chatgpt"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://providentialabs.com/blog/como-aparecer-en-chatgpt"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://providentialabs.com/en/blog/how-to-appear-in-chatgpt"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://providentialabs.com/it/blog/come-apparire-su-chatgpt"/>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -87,6 +91,8 @@
     <loc>https://providentialabs.com/blog/analisis-datos-marketing</loc>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://providentialabs.com/blog/analisis-datos-marketing"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://providentialabs.com/blog/analisis-datos-marketing"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://providentialabs.com/en/blog/marketing-data-analysis"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://providentialabs.com/it/blog/analisi-dati-marketing"/>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
